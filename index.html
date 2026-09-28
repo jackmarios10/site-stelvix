@@ -54,6 +54,13 @@
             <a href="#home" class="navbar-link" data-nav-link>Home</a>
           </li>
 
+          <li class="navbar-item">
+            <a href="#store" class="navbar-link navbar-store-link">
+              <span>Loja</span>
+              <small>NOVO</small>
+            </a>
+          </li>
+
           <li>
             <a href="#service" class="navbar-link" data-nav-link>Serviços</a>
           </li>
@@ -123,6 +130,486 @@
 
         </div>
       </section>
+
+
+
+
+      <!-- =========================================================
+     STELVIX STORE — E-COMMERCE EXPERIENCE
+     MODULE 01 — CATALOG + SEARCH + QUICK VIEW + CART
+========================================================= -->
+
+<section class="stelvix-shop" id="stelvix-shop" aria-label="STELVIX Store">
+
+  <!-- Store Header -->
+  <div class="stelvix-shop-container">
+
+    <div class="shop-heading">
+
+      <div class="shop-heading-copy">
+
+        <span class="shop-eyebrow">
+          <span class="shop-eyebrow-dot"></span>
+          STELVIX STORE
+        </span>
+
+        <h2 class="shop-title">
+          Tudo o que precisa.
+          <span>Mais perto de si.</span>
+        </h2>
+
+        <p class="shop-description">
+          Descubra produtos selecionados pela STELVIX,
+          com uma experiência simples, segura e pensada
+          para facilitar as suas compras.
+        </p>
+
+      </div>
+
+      <!-- Search -->
+      <div class="shop-search-wrapper">
+
+        <div class="shop-search">
+
+          <ion-icon name="search-outline"></ion-icon>
+
+          <input
+            type="search"
+            id="storeSearch"
+            placeholder="Pesquisar produtos..."
+            autocomplete="off"
+            aria-label="Pesquisar produtos"
+          >
+
+          <button
+            type="button"
+            class="shop-search-clear"
+            id="clearSearch"
+            aria-label="Limpar pesquisa"
+          >
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Categories -->
+    <div class="shop-toolbar">
+
+      <div class="shop-categories" id="storeCategories">
+
+        <button
+          type="button"
+          class="shop-category active"
+          data-category="all"
+        >
+          Todos
+        </button>
+
+      </div>
+
+      <button
+        type="button"
+        class="shop-cart-trigger"
+        id="openCart"
+        aria-label="Abrir carrinho"
+      >
+
+        <span class="shop-cart-icon">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+
+          <span
+            class="shop-cart-count"
+            id="cartCount"
+          >
+            0
+          </span>
+        </span>
+
+        <span class="shop-cart-label">
+          Carrinho
+        </span>
+
+        <ion-icon
+          class="shop-cart-arrow"
+          name="arrow-forward-outline"
+        ></ion-icon>
+
+      </button>
+
+    </div>
+
+
+    <!-- Featured Products -->
+    <div class="shop-featured-header">
+
+      <div>
+        <span class="shop-section-kicker">
+          SELEÇÃO STELVIX
+        </span>
+
+        <h3>
+          Produtos em destaque
+        </h3>
+      </div>
+
+      <button
+        type="button"
+        class="shop-view-all"
+        id="viewAllProducts"
+      >
+        Ver todos
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </button>
+
+    </div>
+
+    <div
+      class="shop-products-grid"
+      id="featuredProducts"
+    ></div>
+
+
+    <!-- All Products -->
+    <div
+      class="shop-all-products"
+      id="allProductsSection"
+    >
+
+      <div class="shop-all-products-header">
+
+        <div>
+          <span class="shop-section-kicker">
+            CATÁLOGO
+          </span>
+
+          <h3>
+            Explore a nossa seleção
+          </h3>
+        </div>
+
+        <span
+          class="shop-results-count"
+          id="resultsCount"
+        >
+          0 produtos
+        </span>
+
+      </div>
+
+      <div
+        class="shop-products-grid"
+        id="productsGrid"
+      ></div>
+
+    </div>
+
+
+    <!-- Empty State -->
+    <div
+      class="shop-empty"
+      id="storeEmpty"
+      hidden
+    >
+
+      <div class="shop-empty-icon">
+        <ion-icon name="search-outline"></ion-icon>
+      </div>
+
+      <h3>
+        Não encontramos esse produto.
+      </h3>
+
+      <p>
+        Tente pesquisar por outro nome ou escolha
+        uma categoria diferente.
+      </p>
+
+      <button
+        type="button"
+        id="resetStore"
+        class="shop-primary-button"
+      >
+        Ver todos os produtos
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PRODUCT QUICK VIEW
+========================================================= -->
+
+<div
+  class="store-modal"
+  id="productModal"
+  aria-hidden="true"
+>
+
+  <div
+    class="store-modal-overlay"
+    data-close-product
+  ></div>
+
+  <div
+    class="product-modal-container"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="productModalTitle"
+  >
+
+    <button
+      type="button"
+      class="store-modal-close"
+      id="closeProductModal"
+      aria-label="Fechar produto"
+    >
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+
+    <div class="product-modal-image">
+
+      <img
+        id="productModalImage"
+        src=""
+        alt=""
+      >
+
+      <span
+        class="product-modal-badge"
+        id="productModalBadge"
+      ></span>
+
+    </div>
+
+    <div class="product-modal-info">
+
+      <span
+        class="product-modal-category"
+        id="productModalCategory"
+      ></span>
+
+      <h2 id="productModalTitle"></h2>
+
+      <div class="product-modal-price-row">
+
+        <strong id="productModalPrice"></strong>
+
+        <del id="productModalOldPrice"></del>
+
+      </div>
+
+      <p
+        class="product-modal-description"
+        id="productModalDescription"
+      ></p>
+
+      <div
+        class="product-stock"
+        id="productModalStock"
+      ></div>
+
+      <div class="product-modal-actions">
+
+        <div class="quantity-control">
+
+          <button
+            type="button"
+            id="decreaseQuantity"
+            aria-label="Diminuir quantidade"
+          >
+            −
+          </button>
+
+          <span id="productQuantity">
+            1
+          </span>
+
+          <button
+            type="button"
+            id="increaseQuantity"
+            aria-label="Aumentar quantidade"
+          >
+            +
+          </button>
+
+        </div>
+
+        <button
+          type="button"
+          class="product-add-button"
+          id="addToCartButton"
+        >
+
+          <ion-icon name="bag-add-outline"></ion-icon>
+
+          Adicionar ao carrinho
+
+        </button>
+
+      </div>
+
+      <div class="product-trust">
+
+        <div>
+          <ion-icon name="shield-checkmark-outline"></ion-icon>
+          <span>Compra simples</span>
+        </div>
+
+        <div>
+          <ion-icon name="car-outline"></ion-icon>
+          <span>Entrega STELVIX</span>
+        </div>
+
+        <div>
+          <ion-icon name="cash-outline"></ion-icon>
+          <span>Pagamento na entrega</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     CART DRAWER
+========================================================= -->
+
+<div
+  class="cart-drawer"
+  id="cartDrawer"
+  aria-hidden="true"
+>
+
+  <div
+    class="cart-overlay"
+    id="cartOverlay"
+  ></div>
+
+  <aside
+    class="cart-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cartTitle"
+  >
+
+    <div class="cart-header">
+
+      <div>
+
+        <span class="cart-kicker">
+          STELVIX STORE
+        </span>
+
+        <h2 id="cartTitle">
+          O seu carrinho
+        </h2>
+
+      </div>
+
+      <button
+        type="button"
+        class="cart-close"
+        id="closeCart"
+        aria-label="Fechar carrinho"
+      >
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+    </div>
+
+
+    <div
+      class="cart-items"
+      id="cartItems"
+    ></div>
+
+
+    <div
+      class="cart-empty"
+      id="cartEmpty"
+    >
+
+      <div class="cart-empty-icon">
+        <ion-icon name="bag-outline"></ion-icon>
+      </div>
+
+      <h3>
+        O seu carrinho está vazio
+      </h3>
+
+      <p>
+        Adicione produtos para começar a sua compra.
+      </p>
+
+      <button
+        type="button"
+        class="shop-primary-button"
+        id="continueShopping"
+      >
+        Continuar a comprar
+      </button>
+
+    </div>
+
+
+    <div
+      class="cart-footer"
+      id="cartFooter"
+    >
+
+      <div class="cart-summary">
+
+        <span>
+          Subtotal
+        </span>
+
+        <strong id="cartSubtotal">
+          0 Kz
+        </strong>
+
+      </div>
+
+      <p class="cart-note">
+        O valor da entrega será confirmado no checkout.
+      </p>
+
+      <button
+        type="button"
+        class="cart-checkout-button"
+        id="checkoutButton"
+      >
+        Continuar para checkout
+
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+
+      </button>
+
+      <button
+        type="button"
+        class="cart-continue-button"
+        id="continueShoppingBottom"
+      >
+        Continuar a comprar
+      </button>
+
+    </div>
+
+  </aside>
+
+</div>
 
 
 
