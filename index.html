@@ -151,7 +151,9 @@
                 </div>
 
                 <h3 class="h3">
-                  <a href="https://wa.me/244935262323" target="_blank" class="card-title">Consultoria & Gestão Empresarial</a>
+                  <button type="button" class="card-title service-trigger" data-service="consultoria">
+                    Consultoria & Gestão Empresarial
+                  </button>
                 </h3>
 
                 <p class="card-text">
@@ -169,7 +171,9 @@
                 </div>
 
                 <h3 class="h3">
-                  <a href="https://wa.me/244935262323" target="_blank" class="card-title">Tecnologia & Segurança</a>
+                  <button type="button" class="card-title service-trigger" data-service="tecnologia">
+                    Tecnologia & Segurança
+                  </button>
                 </h3>
 
                 <p class="card-text">
@@ -187,7 +191,9 @@
                 </div>
 
                 <h3 class="h3">
-                  <a href="https://wa.me/244935262323" target="_blank" class="card-title">Higiene & Gestão Ambiental</a>
+                  <button type="button" class="card-title service-trigger" data-service="higiene">
+                    Higiene & Gestão Ambiental
+                  </button>
                 </h3>
 
                 <p class="card-text">
@@ -205,7 +211,9 @@
                 </div>
 
                 <h3 class="h3">
-                  <a href="https://wa.me/244935262323" target="_blank" class="card-title">Imobiliário & Mediação</a>
+                  <button type="button" class="card-title service-trigger" data-service="imobiliario">
+                    Imobiliário & Mediação
+                  </button>
                 </h3>
 
                 <p class="card-text">
@@ -223,7 +231,9 @@
                 </div>
 
                 <h3 class="h3">
-                  <a href="https://wa.me/244935262323" target="_blank" class="card-title">Saúde & Comércio</a>
+                  <button type="button" class="card-title service-trigger" data-service="saude">
+                    Saúde & Comércio
+                  </button>
                 </h3>
 
                 <p class="card-text">
@@ -241,7 +251,9 @@
                 </div>
 
                 <h3 class="h3">
-                  <a href="https://wa.me/244935262323" target="_blank" class="card-title">Construção Civil & Acabamentos</a>
+                  <button type="button" class="card-title service-trigger" data-service="construcao">
+                    Construção Civil & Acabamentos
+                  </button>
                 </h3>
 
                 <p class="card-text">
@@ -257,7 +269,131 @@
       </section>
 
 
+      <!-- =====================================================
+     SERVICE DETAIL MODAL
+     ===================================================== -->
 
+<div class="service-modal" id="serviceModal" aria-hidden="true">
+
+  <div class="service-modal-overlay" data-close-service></div>
+
+  <div class="service-modal-container"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="serviceModalTitle">
+
+    <button
+      type="button"
+      class="service-modal-close"
+      id="serviceModalClose"
+      aria-label="Fechar detalhes do serviço">
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+
+    <div class="service-modal-content">
+
+      <div class="service-modal-header">
+
+        <span class="service-modal-label">
+          SOLUÇÕES STELVIX
+        </span>
+
+        <h2 id="serviceModalTitle">
+          Serviço
+        </h2>
+
+        <p id="serviceModalIntro">
+          Conheça melhor esta solução.
+        </p>
+
+      </div>
+
+      <div class="service-modal-grid">
+
+        <!-- DESCRIÇÃO -->
+
+        <div class="service-detail-main">
+
+          <span class="service-detail-eyebrow">
+            SOBRE O SERVIÇO
+          </span>
+
+          <h3 id="serviceDetailTitle">
+            Soluções pensadas para as necessidades da sua empresa.
+          </h3>
+
+          <p id="serviceDetailDescription">
+            A STELVIX oferece soluções estruturadas de acordo com as necessidades de cada cliente.
+          </p>
+
+          <div class="service-detail-list-wrapper">
+
+            <span class="service-detail-eyebrow">
+              O QUE PODEMOS FAZER
+            </span>
+
+            <ul id="serviceDetailList" class="service-detail-list">
+            </ul>
+
+          </div>
+
+        </div>
+
+
+        <!-- BENEFÍCIOS -->
+
+        <div class="service-detail-side">
+
+          <div class="service-benefit-box">
+
+            <span class="service-detail-eyebrow">
+              POR QUE CONSIDERAR ESTA SOLUÇÃO?
+            </span>
+
+            <p id="serviceBenefit">
+              Uma solução profissional pode ajudar a sua empresa a trabalhar com mais organização, eficiência e segurança.
+            </p>
+
+          </div>
+
+          <div class="service-cta-box">
+
+            <span>
+              PRECISA DESTA SOLUÇÃO?
+            </span>
+
+            <strong id="serviceCtaTitle">
+              Fale com a STELVIX.
+            </strong>
+
+            <a
+              href="#"
+              id="serviceWhatsappButton"
+              class="btn btn-primary service-whatsapp-btn"
+              target="_blank"
+              rel="noopener noreferrer">
+
+              <ion-icon name="logo-whatsapp"></ion-icon>
+
+              Falar com a STELVIX
+
+            </a>
+
+            <small>
+              Atendimento personalizado através do WhatsApp.
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
 
       <!-- 
