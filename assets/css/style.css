@@ -405,6 +405,437 @@ body {
 
 
 
+/* =====================================================
+   STELVIX — SERVICE DETAIL EXPERIENCE
+   ===================================================== */
+
+.service-trigger {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.service-trigger:hover {
+  color: #EE2B31;
+}
+
+
+/* MODAL */
+
+.service-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.service-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+/* OVERLAY */
+
+.service-modal-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(10, 10, 10, 0.78);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* CONTAINER */
+
+.service-modal-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1050px, 100%);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.25);
+
+  transform: translateY(30px) scale(0.97);
+
+  transition:
+    transform 0.4s cubic-bezier(.2,.8,.2,1);
+}
+
+.service-modal.active .service-modal-container {
+  transform: translateY(0) scale(1);
+}
+
+
+/* CLOSE */
+
+.service-modal-close {
+  position: absolute;
+
+  top: 22px;
+  right: 22px;
+
+  width: 46px;
+  height: 46px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #f4f4f4;
+
+  color: #111111;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  z-index: 5;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.service-modal-close:hover {
+  background: #EE2B31;
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+
+/* CONTENT */
+
+.service-modal-content {
+  padding: 65px;
+}
+
+
+/* HEADER */
+
+.service-modal-header {
+  max-width: 760px;
+
+  margin-bottom: 50px;
+}
+
+.service-modal-label,
+.service-detail-eyebrow {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #EE2B31;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+}
+
+.service-modal-header h2 {
+  margin-bottom: 18px;
+
+  color: #111111;
+
+  font-size: clamp(32px, 4vw, 52px);
+
+  line-height: 1.05;
+}
+
+.service-modal-header p {
+  color: #666666;
+
+  font-size: 18px;
+
+  line-height: 1.7;
+}
+
+
+/* GRID */
+
+.service-modal-grid {
+  display: grid;
+
+  grid-template-columns: 1.35fr 0.65fr;
+
+  gap: 60px;
+}
+
+
+/* MAIN */
+
+.service-detail-main h3 {
+  margin-bottom: 20px;
+
+  color: #111111;
+
+  font-size: 27px;
+
+  line-height: 1.2;
+}
+
+.service-detail-main > p {
+  color: #555555;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+  margin-bottom: 40px;
+}
+
+
+/* LIST */
+
+.service-detail-list {
+  list-style: none;
+
+  display: grid;
+
+  gap: 14px;
+
+  margin: 0;
+  padding: 0;
+}
+
+.service-detail-list li {
+  position: relative;
+
+  padding: 17px 20px 17px 48px;
+
+  border: 1px solid #eeeeee;
+
+  border-radius: 12px;
+
+  background: #fafafa;
+
+  color: #333333;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+.service-detail-list li::before {
+  content: "✓";
+
+  position: absolute;
+
+  left: 18px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 22px;
+  height: 22px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: #EE2B31;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+/* SIDE */
+
+.service-detail-side {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+
+/* BENEFIT BOX */
+
+.service-benefit-box {
+  padding: 28px;
+
+  border-radius: 18px;
+
+  background: #111111;
+
+  color: #ffffff;
+}
+
+.service-benefit-box .service-detail-eyebrow {
+  color: #FF6B70;
+}
+
+.service-benefit-box p {
+  margin: 0;
+
+  color: #dddddd;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+/* CTA */
+
+.service-cta-box {
+  padding: 30px;
+
+  border: 1px solid #eeeeee;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+.service-cta-box > span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #777777;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.service-cta-box strong {
+  display: block;
+
+  margin-bottom: 25px;
+
+  color: #111111;
+
+  font-size: 22px;
+
+  line-height: 1.25;
+}
+
+.service-whatsapp-btn {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  text-align: center;
+}
+
+.service-cta-box small {
+  display: block;
+
+  margin-top: 14px;
+
+  color: #888888;
+
+  font-size: 12px;
+
+  text-align: center;
+
+  line-height: 1.5;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .service-modal {
+    padding: 12px;
+  }
+
+  .service-modal-container {
+    max-height: 94vh;
+
+    border-radius: 20px;
+  }
+
+  .service-modal-content {
+    padding: 45px 24px 30px;
+  }
+
+  .service-modal-header {
+    margin-bottom: 35px;
+
+    padding-right: 35px;
+  }
+
+  .service-modal-header h2 {
+    font-size: 32px;
+  }
+
+  .service-modal-header p {
+    font-size: 15px;
+  }
+
+  .service-modal-grid {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+  .service-detail-main h3 {
+    font-size: 23px;
+  }
+
+  .service-modal-close {
+    top: 15px;
+    right: 15px;
+
+    width: 40px;
+    height: 40px;
+  }
+
+}
+
 
 
 /*-----------------------------------*\
