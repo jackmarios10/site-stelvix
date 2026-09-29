@@ -569,706 +569,891 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-/* =========================================================
-   STELVIX STORE
-   MODULE 01 — CATALOG ENGINE
-========================================================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded", () => {
+  "use strict";
 
-  /* =======================================================
-     PRODUCT DATABASE
-  ======================================================= */
 
-  const products = [
+  /* ========================================================
+     1. PRODUCT DATABASE
+     ======================================================== */
+
+  const stelvixProducts = [
 
     {
-      id: 1,
-      name: "Água Mineral PURA",
-      category: "Mini Mercado",
-      price: 500,
-      oldPrice: null,
-      image: "./assets/images/product-01.jpg",
-      description:
-        "Água mineral para consumo diário, selecionada para a sua rotina.",
-      stock: 25,
-      featured: true,
-      badge: "Disponível",
-      available: true
-    },
-
-    {
-      id: 2,
-      name: "Red Label",
-      category: "Mini Mercado",
-      price: 7500,
-      oldPrice: 9000,
-      image: "./assets/images/product-02.jpg",
-      description:
-        "Produto selecionado pela STELVIX com excelente relação entre qualidade e preço.",
-      stock: 8,
-      featured: true,
-      badge: "Oferta",
-      available: true
-    },
-
-    {
-      id: 3,
-      name: "Produto de Higiene",
-      category: "Higiene",
-      price: 3500,
-      oldPrice: null,
-      image: "./assets/images/product-03.jpg",
-      description:
-        "Solução prática para manter a sua casa limpa e organizada.",
-      stock: 14,
-      featured: true,
-      badge: "Popular",
-      available: true
-    },
-
-    {
-      id: 4,
-      name: "Kit de Ferramentas",
-      category: "Casa",
-      price: 12000,
-      oldPrice: null,
-      image: "./assets/images/product-04.jpg",
-      description:
-        "Produto funcional para facilitar o seu dia a dia.",
-      stock: 5,
-      featured: true,
+      id: "coz-001",
+      name: "Pia de Cozinha Multifuncional",
+      category: "cozinha",
+      categoryLabel: "Cozinha",
+      price: 114999,
       badge: "Destaque",
-      available: true
-    },
-
-    {
-      id: 5,
-      name: "Produto de Farmácia",
-      category: "Farmácia",
-      price: 4500,
-      oldPrice: null,
-      image: "./assets/images/product-05.jpg",
       description:
-        "Produto disponível através da STELVIX.",
-      stock: 20,
-      featured: false,
-      badge: "",
-      available: true
+        "Transforme sua cozinha com a Pia que faz tudo!",
+      image:
+        "assets/images/item-1.jpeg"
     },
 
     {
-      id: 6,
-      name: "Leite Gordo MIMOSA",
-      category: "Mini Mercado",
-      price: 2500,
-      oldPrice: null,
-      image: "./assets/images/product-06.png",
+      id: "beb-001",
+      name: "Whisky Johnnie Walker Red Label 1L - Original Escocês",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 16999,
+      badge: "Popular",
       description:
-        "Um essencial para as suas compras do dia a dia.",
-      stock: 18,
-      featured: false,
-      badge: "",
-      available: true
+        "O Clássico que nunca falha!",
+      image:
+        "assets/images/product-02.jpg"
     },
 
     {
-      id: 7,
-      name: "Airpods Pro",
-      category: "Eletrónica",
+      id: "beb-002",
+      name: "Whisky Johnnie Walker Double Black 1L - Intenso e Defurado",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 18999,
+      badge: "",
+      description:
+        "Para quem gosta de whisky com personalidade!",
+      image:
+        "assets/images/item-2.jpg"
+    },
+
+    {
+      id: "beb-003",
+      name: "Whisky White Horse 1L - O Clássico Suave e Equilibrado",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 8600,
+      badge: "",
+      description:
+        "O queridinho de Angola!",
+      image:
+        "assets/images/item-3.jpg"
+    },
+
+    {
+      id: "tec-001",
+      name: "Airpods Oraimo - Som Potente e Bateria de Longa Duração",
+      category: "tecnologia",
+      categoryLabel: "Tecnologia",
+      price: 11999,
+      badge: "Novo",
+      description:
+        "Estilo, som e bateria que não te deixam na mão!",
+      image:
+        "assets/images/item-4.jpg"
+    },
+
+    {
+      id: "tec-002",
+      name: "Fones JBL Air Pro - Som Puro e Graves Potentes",
+      category: "tecnologia",
+      categoryLabel: "Tecnologia",
       price: 6000,
-      oldPrice: null,
-      image: "./assets/images/product-07.jpg",
+      badge: "",
       description:
-        "Tecnologia selecionada para oferecer praticidade e desempenho.",
-      stock: 4,
-      featured: false,
-      badge: "Últimas unidades",
-      available: true
+        "A qualidade lendária da JBL agora no seu ouvido!",
+      image:
+        "assets/images/item-5.jpg"
     },
 
     {
-      id: 8,
-      name: "Produto para o Lar",
-      category: "Casa",
-      price: 9800,
-      oldPrice: 11500,
-      image: "./assets/images/product-08.jpg",
+      id: "tec-003",
+      name: "Microfone de Lapela Sem Fio Duplo Profissional - com 2 TX + Cancelamento de Ruído",
+      category: "tecnologia",
+      categoryLabel: "Tecnologia",
+      price: 10000,
+      badge: "Oportunidade",
       description:
-        "Uma solução prática para complementar o seu espaço.",
-      stock: 0,
-      featured: false,
-      badge: "Esgotado",
-      available: false
+        "Áudio profissional para seus vídeos e lives!",
+      image:
+        "assets/images/item-6.jpg"
+    },
+
+    {
+      id: "tec-004",
+      name: "Power Bank Oraimo - Carregamento Rápido",
+      category: "tecnologia",
+      categoryLabel: "Tecnologia",
+      price: 19999,
+      badge: "",
+      description:
+        "Nuna mais fique sem bateria!",
+      image:
+        "assets/images/item-7.jpg"
     }
 
   ];
 
 
-  /* =======================================================
-     STATE
-  ======================================================= */
+  /* ========================================================
+     2. CONFIGURAÇÕES
+     ======================================================== */
 
-  let currentCategory = "all";
-  let currentSearch = "";
-  let selectedProduct = null;
-  let selectedQuantity = 1;
+  const CONFIG = {
 
-  let cart =
-    JSON.parse(localStorage.getItem("stelvixCart")) || [];
+    whatsapp:
+      "244935262323",
 
+    currency:
+      "Kz",
 
-  /* =======================================================
-     DOM
-  ======================================================= */
+    storageKey:
+      "stelvixStoreCart"
 
-  const productsGrid =
-    document.getElementById("productsGrid");
-
-  const featuredProducts =
-    document.getElementById("featuredProducts");
-
-  const categoriesContainer =
-    document.getElementById("storeCategories");
-
-  const searchInput =
-    document.getElementById("storeSearch");
-
-  const clearSearch =
-    document.getElementById("clearSearch");
-
-  const resultsCount =
-    document.getElementById("resultsCount");
-
-  const emptyState =
-    document.getElementById("storeEmpty");
-
-  const allProductsSection =
-    document.getElementById("allProductsSection");
-
-  const productModal =
-    document.getElementById("productModal");
-
-  const productModalImage =
-    document.getElementById("productModalImage");
-
-  const productModalTitle =
-    document.getElementById("productModalTitle");
-
-  const productModalCategory =
-    document.getElementById("productModalCategory");
-
-  const productModalPrice =
-    document.getElementById("productModalPrice");
-
-  const productModalOldPrice =
-    document.getElementById("productModalOldPrice");
-
-  const productModalDescription =
-    document.getElementById("productModalDescription");
-
-  const productModalStock =
-    document.getElementById("productModalStock");
-
-  const productModalBadge =
-    document.getElementById("productModalBadge");
-
-  const productQuantity =
-    document.getElementById("productQuantity");
-
-  const cartDrawer =
-    document.getElementById("cartDrawer");
-
-  const cartItems =
-    document.getElementById("cartItems");
-
-  const cartEmpty =
-    document.getElementById("cartEmpty");
-
-  const cartFooter =
-    document.getElementById("cartFooter");
-
-  const cartSubtotal =
-    document.getElementById("cartSubtotal");
-
-  const cartCount =
-    document.getElementById("cartCount");
+  };
 
 
-  /* =======================================================
-     FORMAT MONEY
-  ======================================================= */
+  /* ========================================================
+     3. STATE
+     ======================================================== */
 
-  function formatKz(value) {
+  let state = {
 
-    return new Intl.NumberFormat("pt-AO", {
-      maximumFractionDigits: 0
-    }).format(value) + " Kz";
+    products:
+      stelvixProducts,
+
+    category:
+      "all",
+
+    search:
+      "",
+
+    sort:
+      "featured",
+
+    cart:
+      loadCart(),
+
+    detailProduct:
+      null,
+
+    detailQuantity:
+      1,
+
+    checkoutStep:
+      1
+
+  };
+
+
+  /* ========================================================
+     4. ELEMENTS
+     ======================================================== */
+
+  const elements = {
+
+    grid:
+      document.getElementById("stelvixProductGrid"),
+
+    search:
+      document.getElementById("stelvixProductSearch"),
+
+    clearSearch:
+      document.getElementById("stelvixClearSearch"),
+
+    categories:
+      document.getElementById("stelvixCategories"),
+
+    sort:
+      document.getElementById("stelvixSortProducts"),
+
+    results:
+      document.getElementById("stelvixResultsText"),
+
+    empty:
+      document.getElementById("stelvixEmptyState"),
+
+    reset:
+      document.getElementById("stelvixResetStore"),
+
+    cartCount:
+      document.getElementById("stelvixCartCount"),
+
+    cartLayer:
+      document.getElementById("stelvixCartLayer"),
+
+    cartOverlay:
+      document.getElementById("stelvixCartOverlay"),
+
+    openCart:
+      document.getElementById("stelvixOpenCart"),
+
+    closeCart:
+      document.getElementById("stelvixCloseCart"),
+
+    cartItems:
+      document.getElementById("stelvixCartItems"),
+
+    cartEmpty:
+      document.getElementById("stelvixCartEmpty"),
+
+    cartFooter:
+      document.getElementById("stelvixCartFooter"),
+
+    cartSubtotal:
+      document.getElementById("stelvixCartSubtotal"),
+
+    continueShopping:
+      document.getElementById("stelvixContinueShopping"),
+
+    checkoutButton:
+      document.getElementById("stelvixCheckoutButton"),
+
+    productModal:
+      document.getElementById("stelvixProductModal"),
+
+    detailImage:
+      document.getElementById("stelvixDetailImage"),
+
+    detailBadge:
+      document.getElementById("stelvixDetailBadge"),
+
+    detailCategory:
+      document.getElementById("stelvixDetailCategory"),
+
+    detailName:
+      document.getElementById("stelvixDetailName"),
+
+    detailDescription:
+      document.getElementById("stelvixDetailDescription"),
+
+    detailPrice:
+      document.getElementById("stelvixDetailPrice"),
+
+    detailMinus:
+      document.getElementById("stelvixDetailMinus"),
+
+    detailPlus:
+      document.getElementById("stelvixDetailPlus"),
+
+    detailQuantity:
+      document.getElementById("stelvixDetailQuantity"),
+
+    addDetailCart:
+      document.getElementById("stelvixAddDetailCart"),
+
+    checkoutModal:
+      document.getElementById("stelvixCheckoutModal"),
+
+    checkoutItems:
+      document.getElementById("stelvixCheckoutItems"),
+
+    checkoutSubtotal:
+      document.getElementById("stelvixCheckoutSubtotal"),
+
+    checkoutTotal:
+      document.getElementById("stelvixCheckoutTotal"),
+
+    success:
+      document.getElementById("stelvixOrderSuccess"),
+
+    orderNumber:
+      document.getElementById("stelvixOrderNumber"),
+
+    closeSuccess:
+      document.getElementById("stelvixCloseSuccess")
+
+  };
+
+
+  /* ========================================================
+     5. HELPERS
+     ======================================================== */
+
+  function formatPrice(value) {
+
+    return new Intl.NumberFormat(
+      "pt-PT"
+    ).format(value) + " " + CONFIG.currency;
 
   }
 
 
-  /* =======================================================
-     PRODUCT STOCK
-  ======================================================= */
+  function loadCart() {
 
-  function stockLabel(product) {
+    try {
 
-    if (!product.available || product.stock <= 0) {
+      const saved =
+        localStorage.getItem(CONFIG.storageKey);
 
-      return `
-        <span class="product-stock out">
-          Esgotado
-        </span>
-      `;
-
-    }
-
-    if (product.stock <= 5) {
-
-      return `
-        <span class="product-stock low">
-          Últimas ${product.stock} unidades
-        </span>
-      `;
-
-    }
-
-    return `
-      <span class="product-stock available">
-        Em stock
-      </span>
-    `;
-
-  }
-
-
-  /* =======================================================
-     PRODUCT CARD
-  ======================================================= */
-
-  function productCard(product) {
-
-    const badge =
-      product.badge
-        ? `
-          <span class="product-badge ${product.oldPrice ? "sale" : ""}">
-            ${product.badge}
-          </span>
-        `
-        : "";
-
-    const disabled =
-      !product.available
-        ? "disabled"
-        : "";
-
-    return `
-
-      <article
-        class="store-product-card"
-        data-product-id="${product.id}"
-      >
-
-        <div class="product-image-wrapper">
-
-          ${badge}
-
-          <img
-            src="${product.image}"
-            alt="${product.name}"
-            loading="lazy"
-            onerror="this.src='./assets/images/placeholder.jpg'"
-          >
-
-          <button
-            type="button"
-            class="product-quick-view"
-            data-quick-view="${product.id}"
-            aria-label="Ver ${product.name}"
-          >
-            <ion-icon name="eye-outline"></ion-icon>
-          </button>
-
-        </div>
-
-        <div class="product-content">
-
-          <span class="product-category">
-            ${product.category}
-          </span>
-
-          <h4 class="product-name">
-            ${product.name}
-          </h4>
-
-          <p class="product-description">
-            ${product.description}
-          </p>
-
-          <div class="product-bottom">
-
-            <div class="product-price">
-
-              <strong>
-                ${formatKz(product.price)}
-              </strong>
-
-              ${
-                product.oldPrice
-                  ? `
-                    <del class="product-old-price">
-                      ${formatKz(product.oldPrice)}
-                    </del>
-                  `
-                  : ""
-              }
-
-            </div>
-
-            <button
-              type="button"
-              class="product-card-add"
-              data-add-cart="${product.id}"
-              ${disabled}
-              aria-label="Adicionar ${product.name}"
-            >
-
-              <ion-icon
-                name="bag-add-outline"
-              ></ion-icon>
-
-            </button>
-
-          </div>
-
-          ${stockLabel(product)}
-
-        </div>
-
-      </article>
-
-    `;
-
-  }
-
-
-  /* =======================================================
-     CATEGORIES
-  ======================================================= */
-
-  function renderCategories() {
-
-    const categories =
-      [...new Set(products.map(product => product.category))];
-
-    categoriesContainer.innerHTML = `
-
-      <button
-        type="button"
-        class="shop-category active"
-        data-category="all"
-      >
-        Todos
-      </button>
-
-      ${
-        categories
-          .map(category => `
-            <button
-              type="button"
-              class="shop-category"
-              data-category="${category}"
-            >
-              ${category}
-            </button>
-          `)
-          .join("")
+      if (!saved) {
+        return [];
       }
 
-    `;
+      const parsed =
+        JSON.parse(saved);
+
+      return Array.isArray(parsed)
+        ? parsed
+        : [];
+
+    } catch (error) {
+
+      console.warn(
+        "STELVIX STORE: não foi possível carregar o carrinho.",
+        error
+      );
+
+      return [];
+
+    }
 
   }
 
 
-  /* =======================================================
-     FILTER PRODUCTS
-  ======================================================= */
+  function saveCart() {
 
-  function getFilteredProducts() {
-
-    return products.filter(product => {
-
-      const categoryMatch =
-        currentCategory === "all" ||
-        product.category === currentCategory;
-
-      const searchMatch =
-        product.name
-          .toLowerCase()
-          .includes(currentSearch.toLowerCase()) ||
-
-        product.category
-          .toLowerCase()
-          .includes(currentSearch.toLowerCase());
-
-      return categoryMatch && searchMatch;
-
-    });
+    localStorage.setItem(
+      CONFIG.storageKey,
+      JSON.stringify(state.cart)
+    );
 
   }
 
 
-  /* =======================================================
-     RENDER PRODUCTS
-  ======================================================= */
+  function getProduct(productId) {
+
+    return state.products.find(
+      product => product.id === productId
+    );
+
+  }
+
+
+  function getCartQuantity() {
+
+    return state.cart.reduce(
+      (total, item) =>
+        total + item.quantity,
+      0
+    );
+
+  }
+
+
+  function getCartSubtotal() {
+
+    return state.cart.reduce(
+
+      (total, item) => {
+
+        const product =
+          getProduct(item.id);
+
+        if (!product) {
+          return total;
+        }
+
+        return total +
+          product.price * item.quantity;
+
+      },
+
+      0
+
+    );
+
+  }
+
+
+  /* ========================================================
+     6. PRODUCT FILTER
+     ======================================================== */
+
+  function getVisibleProducts() {
+
+    let products =
+      [...state.products];
+
+
+    if (state.category !== "all") {
+
+      products =
+        products.filter(
+          product =>
+            product.category ===
+            state.category
+        );
+
+    }
+
+
+    if (state.search.trim()) {
+
+      const search =
+        state.search
+          .toLowerCase()
+          .trim();
+
+      products =
+        products.filter(
+          product =>
+            product.name
+              .toLowerCase()
+              .includes(search)
+
+            ||
+
+            product.description
+              .toLowerCase()
+              .includes(search)
+
+            ||
+
+            product.categoryLabel
+              .toLowerCase()
+              .includes(search)
+        );
+
+    }
+
+
+    if (state.sort === "price-low") {
+
+      products.sort(
+        (a, b) =>
+          a.price - b.price
+      );
+
+    }
+
+
+    if (state.sort === "price-high") {
+
+      products.sort(
+        (a, b) =>
+          b.price - a.price
+      );
+
+    }
+
+
+    if (state.sort === "name") {
+
+      products.sort(
+        (a, b) =>
+          a.name.localeCompare(
+            b.name,
+            "pt"
+          )
+      );
+
+    }
+
+
+    return products;
+
+  }
+
+
+  /* ========================================================
+     7. RENDER PRODUCTS
+     ======================================================== */
 
   function renderProducts() {
 
-    const filtered =
-      getFilteredProducts();
+    const products =
+      getVisibleProducts();
 
-    const featured =
-      products.filter(product => product.featured);
 
-    featuredProducts.innerHTML =
-      featured
-        .map(productCard)
-        .join("");
+    elements.grid.innerHTML =
+      "";
 
-    productsGrid.innerHTML =
-      filtered
-        .map(productCard)
-        .join("");
 
-    resultsCount.textContent =
-      `${filtered.length} ${
-        filtered.length === 1
-          ? "produto"
-          : "produtos"
-      }`;
+    if (!products.length) {
 
-    const hasResults =
-      filtered.length > 0;
+      elements.empty.hidden =
+        false;
 
-    emptyState.hidden = hasResults;
+      elements.grid.style.display =
+        "none";
 
-    allProductsSection.style.display =
-      hasResults ? "block" : "none";
+    } else {
+
+      elements.empty.hidden =
+        true;
+
+      elements.grid.style.display =
+        "grid";
+
+    }
+
+
+    elements.results.textContent =
+      products.length === 1
+        ? "1 produto encontrado"
+        : `${products.length} produtos encontrados`;
+
+
+    products.forEach(
+      product => {
+
+        const card =
+          document.createElement("article");
+
+        card.className =
+          "store-product-card";
+
+
+        card.innerHTML = `
+
+          <div class="store-product-image">
+
+            ${
+              product.badge
+              ?
+              `<span class="store-product-badge">
+                ${product.badge}
+              </span>`
+              :
+              ""
+            }
+
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+              loading="lazy"
+            >
+
+          </div>
+
+
+          <div class="store-product-info">
+
+            <span class="store-product-category">
+              ${product.categoryLabel}
+            </span>
+
+            <h3 class="store-product-name">
+              ${product.name}
+            </h3>
+
+            <p class="store-product-description">
+              ${product.description}
+            </p>
+
+            <div class="store-product-bottom">
+
+              <strong class="store-product-price">
+                ${formatPrice(product.price)}
+              </strong>
+
+              <button
+                type="button"
+                class="store-product-view"
+                data-product-id="${product.id}"
+                aria-label="Ver produto"
+              >
+                →
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+
+        elements.grid.appendChild(card);
+
+      }
+    );
 
   }
 
 
-  /* =======================================================
-     PRODUCT MODAL
-  ======================================================= */
+  /* ========================================================
+     8. OPEN PRODUCT
+     ======================================================== */
 
   function openProduct(productId) {
 
     const product =
-      products.find(item => item.id === Number(productId));
+      getProduct(productId);
 
-    if (!product) return;
+    if (!product) {
+      return;
+    }
 
-    selectedProduct = product;
 
-    selectedQuantity = 1;
+    state.detailProduct =
+      product;
 
-    productQuantity.textContent = selectedQuantity;
+    state.detailQuantity =
+      1;
 
-    productModalImage.src = product.image;
-    productModalImage.alt = product.name;
 
-    productModalTitle.textContent =
+    elements.detailImage.src =
+      product.image;
+
+    elements.detailImage.alt =
       product.name;
 
-    productModalCategory.textContent =
-      product.category;
 
-    productModalPrice.textContent =
-      formatKz(product.price);
-
-    productModalDescription.textContent =
-      product.description;
-
-    productModalOldPrice.textContent =
-      product.oldPrice
-        ? formatKz(product.oldPrice)
-        : "";
-
-    productModalBadge.textContent =
+    elements.detailBadge.textContent =
       product.badge || "";
 
-    productModalBadge.style.display =
-      product.badge ? "block" : "none";
 
-    productModalStock.innerHTML =
-      stockLabel(product);
+    elements.detailBadge.style.display =
+      product.badge
+        ? "inline-flex"
+        : "none";
 
-    productModal.classList.add("active");
 
-    productModal.setAttribute(
+    elements.detailCategory.textContent =
+      product.categoryLabel;
+
+
+    elements.detailName.textContent =
+      product.name;
+
+
+    elements.detailDescription.textContent =
+      product.description;
+
+
+    elements.detailPrice.textContent =
+      formatPrice(product.price);
+
+
+    elements.detailQuantity.textContent =
+      state.detailQuantity;
+
+
+    elements.productModal.classList.add(
+      "active"
+    );
+
+    elements.productModal.setAttribute(
       "aria-hidden",
       "false"
     );
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+      "hidden";
 
   }
 
 
   function closeProduct() {
 
-    productModal.classList.remove("active");
+    elements.productModal.classList.remove(
+      "active"
+    );
 
-    productModal.setAttribute(
+    elements.productModal.setAttribute(
       "aria-hidden",
       "true"
     );
 
-    document.body.style.overflow = "";
-
-    selectedProduct = null;
+    if (
+      !elements.cartLayer.classList.contains(
+        "active"
+      )
+      &&
+      !elements.checkoutModal.classList.contains(
+        "active"
+      )
+    ) {
+      document.body.style.overflow =
+        "";
+    }
 
   }
 
 
-  /* =======================================================
-     ADD TO CART
-  ======================================================= */
+  /* ========================================================
+     9. CART
+     ======================================================== */
 
-  function addToCart(productId, quantity = 1) {
+  function addToCart(
+    productId,
+    quantity = 1
+  ) {
 
     const product =
-      products.find(item => item.id === Number(productId));
+      getProduct(productId);
 
-    if (!product || !product.available) return;
+    if (!product) {
+      return;
+    }
+
 
     const existing =
-      cart.find(item => item.id === product.id);
+      state.cart.find(
+        item =>
+          item.id === productId
+      );
+
 
     if (existing) {
 
-      existing.quantity += quantity;
-
-      if (existing.quantity > product.stock) {
-        existing.quantity = product.stock;
-      }
+      existing.quantity +=
+        quantity;
 
     } else {
 
-      cart.push({
-        id: product.id,
-        quantity: Math.min(quantity, product.stock)
+      state.cart.push({
+
+        id:
+          productId,
+
+        quantity:
+          quantity
+
       });
 
     }
 
+
     saveCart();
 
-    updateCartUI();
+    renderCart();
 
-    openCart();
-
-  }
-
-
-  /* =======================================================
-     SAVE CART
-  ======================================================= */
-
-  function saveCart() {
-
-    localStorage.setItem(
-      "stelvixCart",
-      JSON.stringify(cart)
-    );
+    updateCartCount();
 
   }
 
 
-  /* =======================================================
-     CART DETAILS
-  ======================================================= */
+  function updateCartItem(
+    productId,
+    quantity
+  ) {
 
-  function getCartProducts() {
+    const item =
+      state.cart.find(
+        cartItem =>
+          cartItem.id === productId
+      );
 
-    return cart
-      .map(item => {
-
-        const product =
-          products.find(
-            product => product.id === item.id
-          );
-
-        if (!product) return null;
-
-        return {
-          ...product,
-          quantity: item.quantity
-        };
-
-      })
-      .filter(Boolean);
-
-  }
-
-
-  /* =======================================================
-     RENDER CART
-  ======================================================= */
-
-  function renderCart() {
-
-    const items =
-      getCartProducts();
-
-    if (!items.length) {
-
-      cartItems.innerHTML = "";
-
-      cartEmpty.style.display = "flex";
-
-      cartFooter.style.display = "none";
-
+    if (!item) {
       return;
+    }
+
+
+    if (quantity <= 0) {
+
+      state.cart =
+        state.cart.filter(
+          cartItem =>
+            cartItem.id !== productId
+        );
+
+    } else {
+
+      item.quantity =
+        quantity;
 
     }
 
-    cartEmpty.style.display = "none";
 
-    cartFooter.style.display = "block";
+    saveCart();
 
-    cartItems.innerHTML =
-      items.map(item => `
+    renderCart();
 
-        <div class="cart-item">
+    updateCartCount();
 
-          <div class="cart-item-image">
+  }
+
+
+  function removeFromCart(
+    productId
+  ) {
+
+    state.cart =
+      state.cart.filter(
+        item =>
+          item.id !== productId
+      );
+
+
+    saveCart();
+
+    renderCart();
+
+    updateCartCount();
+
+  }
+
+
+  function updateCartCount() {
+
+    elements.cartCount.textContent =
+      getCartQuantity();
+
+  }
+
+
+  function renderCart() {
+
+    const hasItems =
+      state.cart.length > 0;
+
+
+    elements.cartItems.innerHTML =
+      "";
+
+
+    elements.cartEmpty.classList.toggle(
+      "visible",
+      !hasItems
+    );
+
+
+    elements.cartFooter.style.display =
+      hasItems
+        ? "block"
+        : "none";
+
+
+    state.cart.forEach(
+      item => {
+
+        const product =
+          getProduct(item.id);
+
+        if (!product) {
+          return;
+        }
+
+
+        const row =
+          document.createElement("div");
+
+        row.className =
+          "store-cart-item";
+
+
+        row.innerHTML = `
+
+          <div class="store-cart-item-image">
 
             <img
-              src="${item.image}"
-              alt="${item.name}"
-              onerror="this.src='./assets/images/placeholder.jpg'"
+              src="${product.image}"
+              alt="${product.name}"
             >
 
           </div>
 
-          <div class="cart-item-info">
 
-            <h4>
-              ${item.name}
+          <div>
+
+            <h4 class="store-cart-item-name">
+              ${product.name}
             </h4>
 
-            <span>
-              ${formatKz(item.price)}
-            </span>
+            <div class="store-cart-item-price">
+              ${formatPrice(product.price)}
+            </div>
 
-            <div class="cart-item-quantity">
+
+            <div class="store-cart-item-controls">
 
               <button
                 type="button"
-                data-cart-minus="${item.id}"
+                data-cart-minus="${product.id}"
               >
                 −
               </button>
@@ -1279,558 +1464,1468 @@ document.addEventListener("DOMContentLoaded", () => {
 
               <button
                 type="button"
-                data-cart-plus="${item.id}"
+                data-cart-plus="${product.id}"
               >
                 +
+              </button>
+
+              <button
+                type="button"
+                class="store-cart-remove"
+                data-cart-remove="${product.id}"
+              >
+                ×
               </button>
 
             </div>
 
           </div>
 
-          <div>
 
-            <div class="cart-item-price">
-              ${formatKz(item.price * item.quantity)}
-            </div>
+          <strong>
+            ${formatPrice(
+              product.price *
+              item.quantity
+            )}
+          </strong>
 
-            <button
-              type="button"
-              class="cart-item-remove"
-              data-cart-remove="${item.id}"
-            >
-              Remover
-            </button>
+        `;
 
-          </div>
 
-        </div>
+        elements.cartItems.appendChild(
+          row
+        );
 
-      `).join("");
+      }
+    );
 
-    const subtotal =
-      items.reduce(
-        (total, item) =>
-          total + (item.price * item.quantity),
-        0
+
+    elements.cartSubtotal.textContent =
+      formatPrice(
+        getCartSubtotal()
       );
-
-    cartSubtotal.textContent =
-      formatKz(subtotal);
 
   }
 
-
-  /* =======================================================
-     UPDATE CART UI
-  ======================================================= */
-
-  function updateCartUI() {
-
-    const count =
-      cart.reduce(
-        (total, item) =>
-          total + item.quantity,
-        0
-      );
-
-    cartCount.textContent = count;
-
-    renderCart();
-
-    saveCart();
-
-  }
-
-
-  /* =======================================================
-     OPEN CART
-  ======================================================= */
 
   function openCart() {
 
-    cartDrawer.classList.add("active");
+    renderCart();
 
-    cartDrawer.setAttribute(
+    elements.cartLayer.classList.add(
+      "active"
+    );
+
+    elements.cartLayer.setAttribute(
       "aria-hidden",
       "false"
     );
 
-    document.body.style.overflow = "hidden";
-
-    updateCartUI();
+    document.body.style.overflow =
+      "hidden";
 
   }
 
 
-  /* =======================================================
-     CLOSE CART
-  ======================================================= */
-
   function closeCart() {
 
-    cartDrawer.classList.remove("active");
+    elements.cartLayer.classList.remove(
+      "active"
+    );
 
-    cartDrawer.setAttribute(
+    elements.cartLayer.setAttribute(
       "aria-hidden",
       "true"
     );
 
-    document.body.style.overflow = "";
+
+    if (
+      !elements.productModal.classList.contains(
+        "active"
+      )
+      &&
+      !elements.checkoutModal.classList.contains(
+        "active"
+      )
+    ) {
+
+      document.body.style.overflow =
+        "";
+
+    }
 
   }
 
 
-  /* =======================================================
-     CATEGORY CLICK
-  ======================================================= */
+  /* ========================================================
+     10. CHECKOUT
+     ======================================================== */
 
-  categoriesContainer.addEventListener(
-    "click",
-    event => {
+  function openCheckout() {
 
-      const button =
-        event.target.closest(
-          "[data-category]"
-        );
+    if (!state.cart.length) {
 
-      if (!button) return;
-
-      currentCategory =
-        button.dataset.category;
-
-      document
-        .querySelectorAll(".shop-category")
-        .forEach(item =>
-          item.classList.remove("active")
-        );
-
-      button.classList.add("active");
-
-      renderProducts();
-
-    }
-  );
-
-
-  /* =======================================================
-     SEARCH
-  ======================================================= */
-
-  searchInput.addEventListener(
-    "input",
-    () => {
-
-      currentSearch =
-        searchInput.value.trim();
-
-      clearSearch.classList.toggle(
-        "visible",
-        currentSearch.length > 0
-      );
-
-      renderProducts();
-
-    }
-  );
-
-
-  clearSearch.addEventListener(
-    "click",
-    () => {
-
-      searchInput.value = "";
-
-      currentSearch = "";
-
-      clearSearch.classList.remove(
-        "visible"
-      );
-
-      renderProducts();
-
-      searchInput.focus();
-
-    }
-  );
-
-
-  /* =======================================================
-     PRODUCT EVENTS
-  ======================================================= */
-
-  document.addEventListener(
-    "click",
-    event => {
-
-      const quickView =
-        event.target.closest(
-          "[data-quick-view]"
-        );
-
-      if (quickView) {
-
-        openProduct(
-          quickView.dataset.quickView
-        );
-
-        return;
-
-      }
-
-
-      const addButton =
-        event.target.closest(
-          "[data-add-cart]"
-        );
-
-      if (addButton) {
-
-        addToCart(
-          addButton.dataset.addCart,
-          1
-        );
-
-      }
-
-
-      const cartPlus =
-        event.target.closest(
-          "[data-cart-plus]"
-        );
-
-      if (cartPlus) {
-
-        updateCartQuantity(
-          Number(cartPlus.dataset.cartPlus),
-          1
-        );
-
-      }
-
-
-      const cartMinus =
-        event.target.closest(
-          "[data-cart-minus]"
-        );
-
-      if (cartMinus) {
-
-        updateCartQuantity(
-          Number(cartMinus.dataset.cartMinus),
-          -1
-        );
-
-      }
-
-
-      const cartRemove =
-        event.target.closest(
-          "[data-cart-remove]"
-        );
-
-      if (cartRemove) {
-
-        removeFromCart(
-          Number(cartRemove.dataset.cartRemove)
-        );
-
-      }
-
-    }
-  );
-
-
-  /* =======================================================
-     QUANTITY MODAL
-  ======================================================= */
-
-  document
-    .getElementById("increaseQuantity")
-    .addEventListener(
-      "click",
-      () => {
-
-        if (!selectedProduct) return;
-
-        if (
-          selectedQuantity <
-          selectedProduct.stock
-        ) {
-
-          selectedQuantity++;
-
-          productQuantity.textContent =
-            selectedQuantity;
-
-        }
-
-      }
-    );
-
-
-  document
-    .getElementById("decreaseQuantity")
-    .addEventListener(
-      "click",
-      () => {
-
-        if (selectedQuantity > 1) {
-
-          selectedQuantity--;
-
-          productQuantity.textContent =
-            selectedQuantity;
-
-        }
-
-      }
-    );
-
-
-  document
-    .getElementById("addToCartButton")
-    .addEventListener(
-      "click",
-      () => {
-
-        if (!selectedProduct) return;
-
-        addToCart(
-          selectedProduct.id,
-          selectedQuantity
-        );
-
-        closeProduct();
-
-      }
-    );
-
-
-  /* =======================================================
-     REMOVE CART ITEM
-  ======================================================= */
-
-  function removeFromCart(productId) {
-
-    cart =
-      cart.filter(
-        item => item.id !== productId
-      );
-
-    updateCartUI();
-
-  }
-
-
-  /* =======================================================
-     UPDATE CART QUANTITY
-  ======================================================= */
-
-  function updateCartQuantity(
-    productId,
-    change
-  ) {
-
-    const cartItem =
-      cart.find(
-        item => item.id === productId
-      );
-
-    const product =
-      products.find(
-        item => item.id === productId
-      );
-
-    if (!cartItem || !product) return;
-
-    cartItem.quantity += change;
-
-    if (cartItem.quantity <= 0) {
-
-      removeFromCart(productId);
+      openCart();
 
       return;
 
     }
 
-    if (
-      cartItem.quantity >
-      product.stock
-    ) {
 
-      cartItem.quantity =
-        product.stock;
+    renderCheckoutSummary();
 
-    }
+    state.checkoutStep =
+      1;
 
-    updateCartUI();
+    updateCheckoutStep();
+
+
+    elements.checkoutModal.classList.add(
+      "active"
+    );
+
+    elements.checkoutModal.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+    elements.cartLayer.classList.remove(
+      "active"
+    );
+
+
+    document.body.style.overflow =
+      "hidden";
 
   }
 
 
-  /* =======================================================
-     MODAL CLOSE
-  ======================================================= */
+  function closeCheckout() {
 
-  document
-    .getElementById("closeProductModal")
-    .addEventListener(
-      "click",
-      closeProduct
+    elements.checkoutModal.classList.remove(
+      "active"
     );
 
-  document
-    .querySelectorAll("[data-close-product]")
-    .forEach(element => {
-
-      element.addEventListener(
-        "click",
-        closeProduct
-      );
-
-    });
-
-
-  /* =======================================================
-     CART OPEN/CLOSE
-  ======================================================= */
-
-  document
-    .getElementById("openCart")
-    .addEventListener(
-      "click",
-      openCart
-    );
-
-  document
-    .getElementById("closeCart")
-    .addEventListener(
-      "click",
-      closeCart
-    );
-
-  document
-    .getElementById("cartOverlay")
-    .addEventListener(
-      "click",
-      closeCart
-    );
-
-  document
-    .getElementById("continueShopping")
-    .addEventListener(
-      "click",
-      closeCart
-    );
-
-  document
-    .getElementById("continueShoppingBottom")
-    .addEventListener(
-      "click",
-      closeCart
+    elements.checkoutModal.setAttribute(
+      "aria-hidden",
+      "true"
     );
 
 
-  /* =======================================================
-     VIEW ALL
-  ======================================================= */
+    if (
+      !elements.success.classList.contains(
+        "active"
+      )
+    ) {
 
-  document
-    .getElementById("viewAllProducts")
-    .addEventListener(
-      "click",
-      () => {
+      document.body.style.overflow =
+        "";
 
-        allProductsSection.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+    }
 
-      }
-    );
+  }
 
 
-  /* =======================================================
-     RESET STORE
-  ======================================================= */
+  function updateCheckoutStep() {
 
-  document
-    .getElementById("resetStore")
-    .addEventListener(
-      "click",
-      () => {
+    document
+      .querySelectorAll(".checkout-step")
+      .forEach(
+        step => {
 
-        currentCategory = "all";
-
-        currentSearch = "";
-
-        searchInput.value = "";
-
-        document
-          .querySelectorAll(".shop-category")
-          .forEach(item =>
-            item.classList.remove("active")
+          step.classList.toggle(
+            "active",
+            Number(
+              step.dataset.step
+            ) ===
+            state.checkoutStep
           );
 
-        document
-          .querySelector(
-            '[data-category="all"]'
-          )
-          .classList.add("active");
+        }
+      );
 
-        renderProducts();
 
-      }
+    document
+      .querySelectorAll(
+        ".checkout-progress-item"
+      )
+      .forEach(
+        item => {
+
+          const number =
+            Number(
+              item.dataset.progress
+            );
+
+          item.classList.toggle(
+            "active",
+            number ===
+            state.checkoutStep
+          );
+
+          item.classList.toggle(
+            "completed",
+            number <
+            state.checkoutStep
+          );
+
+        }
+      );
+
+
+    if (
+      state.checkoutStep === 4
+    ) {
+
+      updateReview();
+
+    }
+
+  }
+
+
+  function validateStep(step) {
+
+    let valid =
+      true;
+
+
+    if (step === 1) {
+
+      const name =
+        document.getElementById(
+          "checkoutName"
+        );
+
+      const phone =
+        document.getElementById(
+          "checkoutPhone"
+        );
+
+
+      valid =
+        validateField(
+          name,
+          "Digite o seu nome."
+        )
+        &&
+        validateField(
+          phone,
+          "Digite o seu telefone ou WhatsApp."
+        );
+
+    }
+
+
+    if (step === 2) {
+
+      const address =
+        document.getElementById(
+          "checkoutAddress"
+        );
+
+      const zone =
+        document.getElementById(
+          "checkoutZone"
+        );
+
+
+      const addressValid =
+        validateField(
+          address,
+          "Indique o endereço de entrega."
+        );
+
+
+      const zoneValid =
+        validateField(
+          zone,
+          "Selecione a zona de entrega."
+        );
+
+
+      valid =
+        addressValid &&
+        zoneValid;
+
+    }
+
+
+    return valid;
+
+  }
+
+
+  function validateField(
+    field,
+    message
+  ) {
+
+    const wrapper =
+      field.closest(
+        ".checkout-field"
+      );
+
+    const error =
+      wrapper.querySelector(
+        ".checkout-error"
+      );
+
+
+    if (!field.value.trim()) {
+
+      wrapper.classList.add(
+        "invalid"
+      );
+
+      error.textContent =
+        message;
+
+      return false;
+
+    }
+
+
+    wrapper.classList.remove(
+      "invalid"
     );
 
+    error.textContent =
+      "";
 
-  /* =======================================================
-     CHECKOUT PLACEHOLDER
-  ======================================================= */
+    return true;
 
-  document
-    .getElementById("checkoutButton")
-    .addEventListener(
-      "click",
-      () => {
+  }
 
-        if (!cart.length) return;
 
-        alert(
-          "O checkout da STELVIX será ativado no próximo módulo."
+  function updateReview() {
+
+    const name =
+      document.getElementById(
+        "checkoutName"
+      ).value.trim();
+
+    const phone =
+      document.getElementById(
+        "checkoutPhone"
+      ).value.trim();
+
+    const email =
+      document.getElementById(
+        "checkoutEmail"
+      ).value.trim();
+
+    const address =
+      document.getElementById(
+        "checkoutAddress"
+      ).value.trim();
+
+    const zone =
+      document.getElementById(
+        "checkoutZone"
+      ).value;
+
+    const reference =
+      document.getElementById(
+        "checkoutReference"
+      ).value.trim();
+
+    const payment =
+      document.querySelector(
+        'input[name="paymentMethod"]:checked'
+      );
+
+
+    document.getElementById(
+      "reviewContact"
+    ).innerHTML = `
+
+      <strong>${name}</strong><br>
+
+      ${phone}
+
+      ${
+        email
+          ? `<br>${email}`
+          : ""
+      }
+
+    `;
+
+
+    document.getElementById(
+      "reviewDelivery"
+    ).innerHTML = `
+
+      ${address}<br>
+      ${zone}
+
+      ${
+        reference
+          ? `<br>Referência: ${reference}`
+          : ""
+      }
+
+    `;
+
+
+    document.getElementById(
+      "reviewPayment"
+    ).textContent =
+      payment
+        ? payment.value
+        : "Pagamento na entrega";
+
+  }
+
+
+  function renderCheckoutSummary() {
+
+    elements.checkoutItems.innerHTML =
+      "";
+
+
+    state.cart.forEach(
+      item => {
+
+        const product =
+          getProduct(item.id);
+
+        if (!product) {
+          return;
+        }
+
+
+        const row =
+          document.createElement("div");
+
+        row.className =
+          "checkout-summary-item";
+
+
+        row.innerHTML = `
+
+          <div class="checkout-summary-item-image">
+
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+            >
+
+            <span class="checkout-summary-item-quantity">
+              ${item.quantity}
+            </span>
+
+          </div>
+
+
+          <div class="checkout-summary-item-info">
+
+            <strong>
+              ${product.name}
+            </strong>
+
+            <span>
+              ${formatPrice(product.price)}
+            </span>
+
+          </div>
+
+
+          <strong class="checkout-summary-item-price">
+            ${formatPrice(
+              product.price *
+              item.quantity
+            )}
+          </strong>
+
+        `;
+
+
+        elements.checkoutItems.appendChild(
+          row
         );
 
       }
     );
 
 
-  /* =======================================================
-     ESC KEY
-  ======================================================= */
+    const subtotal =
+      getCartSubtotal();
 
-  document.addEventListener(
-    "keydown",
-    event => {
 
-      if (event.key !== "Escape") return;
+    elements.checkoutSubtotal.textContent =
+      formatPrice(subtotal);
 
-      closeProduct();
 
-      closeCart();
+    elements.checkoutTotal.textContent =
+      formatPrice(subtotal);
+
+  }
+
+
+  /* ========================================================
+     11. ORDER
+     ======================================================== */
+
+  function generateOrderNumber() {
+
+    const date =
+      new Date();
+
+    const year =
+      date.getFullYear();
+
+    const month =
+      String(
+        date.getMonth() + 1
+      ).padStart(2, "0");
+
+    const day =
+      String(
+        date.getDate()
+      ).padStart(2, "0");
+
+    const random =
+      Math.floor(
+        1000 +
+        Math.random() * 9000
+      );
+
+
+    return `STX-${year}${month}${day}-${random}`;
+
+  }
+
+
+  function buildWhatsAppMessage(
+    orderNumber
+  ) {
+
+    const name =
+      document.getElementById(
+        "checkoutName"
+      ).value.trim();
+
+    const phone =
+      document.getElementById(
+        "checkoutPhone"
+      ).value.trim();
+
+    const email =
+      document.getElementById(
+        "checkoutEmail"
+      ).value.trim();
+
+    const address =
+      document.getElementById(
+        "checkoutAddress"
+      ).value.trim();
+
+    const zone =
+      document.getElementById(
+        "checkoutZone"
+      ).value;
+
+    const reference =
+      document.getElementById(
+        "checkoutReference"
+      ).value.trim();
+
+    const notes =
+      document.getElementById(
+        "checkoutNotes"
+      ).value.trim();
+
+    const payment =
+      document.querySelector(
+        'input[name="paymentMethod"]:checked'
+      );
+
+
+    let message =
+
+      `*NOVA ENCOMENDA — STELVIX STORE*%0A%0A` +
+
+      `*Nº:* ${orderNumber}%0A%0A` +
+
+      `*CLIENTE*%0A` +
+
+      `Nome: ${name}%0A` +
+
+      `Telefone/WhatsApp: ${phone}%0A` +
+
+      (
+        email
+          ? `E-mail: ${email}%0A`
+          : ""
+      ) +
+
+      `%0A*ENTREGA*%0A` +
+
+      `Endereço: ${address}%0A` +
+
+      `Zona: ${zone}%0A` +
+
+      (
+        reference
+          ? `Referência: ${reference}%0A`
+          : ""
+      ) +
+
+      (
+        notes
+          ? `Observações: ${notes}%0A`
+          : ""
+      ) +
+
+      `%0A*PRODUTOS*%0A`;
+
+
+    state.cart.forEach(
+      item => {
+
+        const product =
+          getProduct(item.id);
+
+        if (!product) {
+          return;
+        }
+
+
+        message +=
+
+          `• ${product.name} — ` +
+
+          `${item.quantity}x — ` +
+
+          `${formatPrice(
+            product.price *
+            item.quantity
+          )}%0A`;
+
+      }
+    );
+
+
+    message +=
+
+      `%0A*SUBTOTAL:* ` +
+
+      `${formatPrice(
+        getCartSubtotal()
+      )}%0A` +
+
+      `*ENTREGA:* A confirmar%0A` +
+
+      `*TOTAL:* ` +
+
+      `${formatPrice(
+        getCartSubtotal()
+      )}%0A%0A` +
+
+      `*PAGAMENTO:* ` +
+
+      `${payment
+        ? payment.value
+        : "Pagamento na entrega"}`;
+
+
+    return message;
+
+  }
+
+
+  function confirmOrder() {
+
+    const step1Valid =
+      validateStep(1);
+
+    const step2Valid =
+      validateStep(2);
+
+
+    if (
+      !step1Valid ||
+      !step2Valid
+    ) {
+
+      state.checkoutStep =
+        !step1Valid
+          ? 1
+          : 2;
+
+      updateCheckoutStep();
+
+      return;
+
+    }
+
+
+    const consent =
+      document.getElementById(
+        "checkoutConsent"
+      );
+
+    const consentError =
+      document.getElementById(
+        "checkoutConsentError"
+      );
+
+
+    if (!consent.checked) {
+
+      consentError.textContent =
+        "Confirme os dados para finalizar a encomenda.";
+
+      return;
+
+    }
+
+
+    consentError.textContent =
+      "";
+
+
+    const orderNumber =
+      generateOrderNumber();
+
+
+    elements.orderNumber.textContent =
+      orderNumber;
+
+
+    const whatsappMessage =
+      buildWhatsAppMessage(
+        orderNumber
+      );
+
+
+    /* Guardamos a última encomenda localmente. */
+
+    const orderData = {
+
+      number:
+        orderNumber,
+
+      date:
+        new Date().toISOString(),
+
+      customer: {
+
+        name:
+          document.getElementById(
+            "checkoutName"
+          ).value.trim(),
+
+        phone:
+          document.getElementById(
+            "checkoutPhone"
+          ).value.trim(),
+
+        email:
+          document.getElementById(
+            "checkoutEmail"
+          ).value.trim()
+
+      },
+
+      delivery: {
+
+        address:
+          document.getElementById(
+            "checkoutAddress"
+          ).value.trim(),
+
+        zone:
+          document.getElementById(
+            "checkoutZone"
+          ).value,
+
+        reference:
+          document.getElementById(
+            "checkoutReference"
+          ).value.trim(),
+
+        notes:
+          document.getElementById(
+            "checkoutNotes"
+          ).value.trim()
+
+      },
+
+      payment:
+        document.querySelector(
+          'input[name="paymentMethod"]:checked'
+        )?.value ||
+        "Pagamento na entrega",
+
+      items:
+        [...state.cart],
+
+      subtotal:
+        getCartSubtotal()
+
+    };
+
+
+    localStorage.setItem(
+      "stelvixLastOrder",
+      JSON.stringify(
+        orderData
+      )
+    );
+
+
+    /*
+      IMPORTANTE:
+
+      O número abaixo é o WhatsApp oficial
+      confirmado para a STELVIX:
+
+      935 262 323
+    */
+
+    const whatsappUrl =
+      `https://wa.me/${CONFIG.whatsapp}?text=${whatsappMessage}`;
+
+
+    /* Limpar carrinho */
+
+    state.cart = [];
+
+    saveCart();
+
+    renderCart();
+
+    updateCartCount();
+
+
+    /* Fechar checkout */
+
+    closeCheckout();
+
+
+    /* Mostrar sucesso */
+
+    elements.success.classList.add(
+      "active"
+    );
+
+    elements.success.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+    /*
+      Pequeno atraso para permitir
+      que o cliente veja a confirmação.
+    */
+
+    setTimeout(
+      function () {
+
+        window.open(
+          whatsappUrl,
+          "_blank"
+        );
+
+      },
+      900
+    );
+
+  }
+
+
+  /* ========================================================
+     12. EVENTOS — PRODUTOS
+     ======================================================== */
+
+  elements.grid.addEventListener(
+    "click",
+    function (event) {
+
+      const button =
+        event.target.closest(
+          "[data-product-id]"
+        );
+
+      if (!button) {
+        return;
+      }
+
+
+      openProduct(
+        button.dataset.productId
+      );
 
     }
   );
 
 
-  /* =======================================================
-     INITIALIZE
-  ======================================================= */
+  /* ========================================================
+     13. EVENTOS — PESQUISA
+     ======================================================== */
 
-  renderCategories();
+  elements.search.addEventListener(
+    "input",
+    function () {
+
+      state.search =
+        this.value;
+
+      renderProducts();
+
+    }
+  );
+
+
+  elements.clearSearch.addEventListener(
+    "click",
+    function () {
+
+      elements.search.value =
+        "";
+
+      state.search =
+        "";
+
+      renderProducts();
+
+      elements.search.focus();
+
+    }
+  );
+
+
+  /* ========================================================
+     14. EVENTOS — CATEGORIAS
+     ======================================================== */
+
+  elements.categories.addEventListener(
+    "click",
+    function (event) {
+
+      const button =
+        event.target.closest(
+          ".store-category"
+        );
+
+      if (!button) {
+        return;
+      }
+
+
+      document
+        .querySelectorAll(
+          ".store-category"
+        )
+        .forEach(
+          category => {
+
+            category.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+
+      button.classList.add(
+        "active"
+      );
+
+
+      state.category =
+        button.dataset.category;
+
+
+      renderProducts();
+
+    }
+  );
+
+
+  /* ========================================================
+     15. EVENTOS — SORT
+     ======================================================== */
+
+  elements.sort.addEventListener(
+    "change",
+    function () {
+
+      state.sort =
+        this.value;
+
+      renderProducts();
+
+    }
+  );
+
+
+  elements.reset.addEventListener(
+    "click",
+    function () {
+
+      state.category =
+        "all";
+
+      state.search =
+        "";
+
+      state.sort =
+        "featured";
+
+
+      elements.search.value =
+        "";
+
+      elements.sort.value =
+        "featured";
+
+
+      document
+        .querySelectorAll(
+          ".store-category"
+        )
+        .forEach(
+          category => {
+
+            category.classList.toggle(
+              "active",
+              category.dataset.category ===
+              "all"
+            );
+
+          }
+        );
+
+
+      renderProducts();
+
+    }
+  );
+
+
+  /* ========================================================
+     16. EVENTOS — PRODUCT MODAL
+     ======================================================== */
+
+  document.addEventListener(
+    "click",
+    function (event) {
+
+      if (
+        event.target.matches(
+          "[data-close-product]"
+        )
+      ) {
+
+        closeProduct();
+
+      }
+
+    }
+  );
+
+
+  elements.detailMinus.addEventListener(
+    "click",
+    function () {
+
+      state.detailQuantity =
+        Math.max(
+          1,
+          state.detailQuantity - 1
+        );
+
+      elements.detailQuantity.textContent =
+        state.detailQuantity;
+
+    }
+  );
+
+
+  elements.detailPlus.addEventListener(
+    "click",
+    function () {
+
+      state.detailQuantity +=
+        1;
+
+      elements.detailQuantity.textContent =
+        state.detailQuantity;
+
+    }
+  );
+
+
+  elements.addDetailCart.addEventListener(
+    "click",
+    function () {
+
+      if (!state.detailProduct) {
+        return;
+      }
+
+
+      addToCart(
+        state.detailProduct.id,
+        state.detailQuantity
+      );
+
+
+      closeProduct();
+
+      openCart();
+
+    }
+  );
+
+
+  /* ========================================================
+     17. EVENTOS — CART
+     ======================================================== */
+
+  elements.openCart.addEventListener(
+    "click",
+    openCart
+  );
+
+
+  elements.closeCart.addEventListener(
+    "click",
+    closeCart
+  );
+
+
+  elements.cartOverlay.addEventListener(
+    "click",
+    closeCart
+  );
+
+
+  elements.continueShopping.addEventListener(
+    "click",
+    closeCart
+  );
+
+
+  elements.cartItems.addEventListener(
+    "click",
+    function (event) {
+
+      const minus =
+        event.target.closest(
+          "[data-cart-minus]"
+        );
+
+      const plus =
+        event.target.closest(
+          "[data-cart-plus]"
+        );
+
+      const remove =
+        event.target.closest(
+          "[data-cart-remove]"
+        );
+
+
+      if (minus) {
+
+        const id =
+          minus.dataset.cartMinus;
+
+        const item =
+          state.cart.find(
+            cartItem =>
+              cartItem.id === id
+          );
+
+        if (item) {
+
+          updateCartItem(
+            id,
+            item.quantity - 1
+          );
+
+        }
+
+      }
+
+
+      if (plus) {
+
+        const id =
+          plus.dataset.cartPlus;
+
+        const item =
+          state.cart.find(
+            cartItem =>
+              cartItem.id === id
+          );
+
+        if (item) {
+
+          updateCartItem(
+            id,
+            item.quantity + 1
+          );
+
+        }
+
+      }
+
+
+      if (remove) {
+
+        removeFromCart(
+          remove.dataset.cartRemove
+        );
+
+      }
+
+    }
+  );
+
+
+  /* ========================================================
+     18. EVENTOS — CHECKOUT
+     ======================================================== */
+
+  elements.checkoutButton.addEventListener(
+    "click",
+    openCheckout
+  );
+
+
+  document.addEventListener(
+    "click",
+    function (event) {
+
+      const next =
+        event.target.closest(
+          "[data-next-step]"
+        );
+
+      const previous =
+        event.target.closest(
+          "[data-prev-step]"
+        );
+
+      const edit =
+        event.target.closest(
+          "[data-review-edit]"
+        );
+
+
+      if (next) {
+
+        const targetStep =
+          Number(
+            next.dataset.nextStep
+          );
+
+
+        if (
+          state.checkoutStep === 1 &&
+          !validateStep(1)
+        ) {
+
+          return;
+
+        }
+
+
+        if (
+          state.checkoutStep === 2 &&
+          !validateStep(2)
+        ) {
+
+          return;
+
+        }
+
+
+        state.checkoutStep =
+          targetStep;
+
+        updateCheckoutStep();
+
+      }
+
+
+      if (previous) {
+
+        state.checkoutStep =
+          Number(
+            previous.dataset.prevStep
+          );
+
+        updateCheckoutStep();
+
+      }
+
+
+      if (edit) {
+
+        state.checkoutStep =
+          Number(
+            edit.dataset.reviewEdit
+          );
+
+        updateCheckoutStep();
+
+      }
+
+
+      if (
+        event.target.matches(
+          "[data-close-checkout]"
+        )
+      ) {
+
+        closeCheckout();
+
+      }
+
+    }
+  );
+
+
+  document
+    .getElementById(
+      "stelvixConfirmOrder"
+    )
+    .addEventListener(
+      "click",
+      confirmOrder
+    );
+
+
+  /* ========================================================
+     19. PAYMENT SELECTOR
+     ======================================================== */
+
+  document
+    .querySelectorAll(
+      ".payment-option"
+    )
+    .forEach(
+      option => {
+
+        option.addEventListener(
+          "click",
+          function () {
+
+            document
+              .querySelectorAll(
+                ".payment-option"
+              )
+              .forEach(
+                item => {
+
+                  item.classList.remove(
+                    "selected"
+                  );
+
+                }
+              );
+
+
+            this.classList.add(
+              "selected"
+            );
+
+
+            const radio =
+              this.querySelector(
+                "input"
+              );
+
+            radio.checked =
+              true;
+
+          }
+        );
+
+      }
+    );
+
+
+  /* ========================================================
+     20. SUCCESS
+     ======================================================== */
+
+  elements.closeSuccess.addEventListener(
+    "click",
+    function () {
+
+      elements.success.classList.remove(
+        "active"
+      );
+
+      elements.success.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.style.overflow =
+        "";
+
+    }
+  );
+
+
+  /* ========================================================
+     21. ESC KEY
+     ======================================================== */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key !== "Escape"
+      ) {
+        return;
+      }
+
+
+      closeProduct();
+
+      closeCart();
+
+      closeCheckout();
+
+
+      elements.success.classList.remove(
+        "active"
+      );
+
+      elements.success.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+  );
+
+
+  /* ========================================================
+     22. INITIALIZATION
+     ======================================================== */
 
   renderProducts();
 
-  updateCartUI();
+  renderCart();
+
+  updateCartCount();
 
 });
