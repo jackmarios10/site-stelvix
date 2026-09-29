@@ -135,204 +135,209 @@
 
 
       <!-- =========================================================
-     STELVIX STORE — E-COMMERCE EXPERIENCE
-     MODULE 01 — CATALOG + SEARCH + QUICK VIEW + CART
-========================================================= -->
+     STELVIX STORE — CATÁLOGO + PESQUISA + CATEGORIAS
+     + PRODUTO + CARRINHO + CHECKOUT PREMIUM
+     
+     VERSÃO: 1.0
+     ========================================================= -->
 
-<section class="stelvix-shop" id="stelvix-shop" aria-label="STELVIX Store">
+<section class="stelvix-store" id="store">
 
-  <!-- Store Header -->
-  <div class="stelvix-shop-container">
+  <!-- =========================
+       STORE HEADER
+       ========================= -->
+  <div class="store-container">
 
-    <div class="shop-heading">
+    <div class="store-heading">
 
-      <div class="shop-heading-copy">
-
-        <span class="shop-eyebrow">
-          <span class="shop-eyebrow-dot"></span>
+      <div class="store-heading-left">
+        <span class="store-eyebrow">
           STELVIX STORE
         </span>
 
-        <h2 class="shop-title">
-          Tudo o que precisa.
+        <h2>
+          Tudo o que precisa.<br>
           <span>Mais perto de si.</span>
         </h2>
 
-        <p class="shop-description">
-          Descubra produtos selecionados pela STELVIX,
-          com uma experiência simples, segura e pensada
-          para facilitar as suas compras.
+        <p>
+          Uma nova experiência de compra da STELVIX,
+          pensada para ser simples, rápida e segura.
         </p>
-
       </div>
 
-      <!-- Search -->
-      <div class="shop-search-wrapper">
+      <div class="store-heading-right">
+        <button
+          type="button"
+          class="store-cart-open"
+          id="stelvixOpenCart"
+        >
+          <span class="store-cart-icon">🛒</span>
 
-        <div class="shop-search">
+          <span>
+            Carrinho
+          </span>
 
-          <ion-icon name="search-outline"></ion-icon>
-
-          <input
-            type="search"
-            id="storeSearch"
-            placeholder="Pesquisar produtos..."
-            autocomplete="off"
-            aria-label="Pesquisar produtos"
-          >
-
-          <button
-            type="button"
-            class="shop-search-clear"
-            id="clearSearch"
-            aria-label="Limpar pesquisa"
-          >
-            <ion-icon name="close-outline"></ion-icon>
-          </button>
-
-        </div>
-
+          <strong id="stelvixCartCount">
+            0
+          </strong>
+        </button>
       </div>
 
     </div>
 
 
-    <!-- Categories -->
-    <div class="shop-toolbar">
+    <!-- =========================
+         SEARCH
+         ========================= -->
+    <div class="store-toolbar">
 
-      <div class="shop-categories" id="storeCategories">
+      <div class="store-search">
+
+        <span class="store-search-icon">
+          ⌕
+        </span>
+
+        <input
+          type="search"
+          id="stelvixProductSearch"
+          placeholder="Pesquisar produtos..."
+          autocomplete="off"
+        >
 
         <button
           type="button"
-          class="shop-category active"
-          data-category="all"
+          id="stelvixClearSearch"
+          class="store-search-clear"
+          aria-label="Limpar pesquisa"
         >
-          Todos
+          ×
         </button>
 
       </div>
 
+    </div>
+
+
+    <!-- =========================
+         CATEGORIES
+         ========================= -->
+    <div class="store-categories" id="stelvixCategories">
+
       <button
         type="button"
-        class="shop-cart-trigger"
-        id="openCart"
-        aria-label="Abrir carrinho"
+        class="store-category active"
+        data-category="all"
       >
+        Todos
+      </button>
 
-        <span class="shop-cart-icon">
-          <ion-icon name="bag-handle-outline"></ion-icon>
+      <button
+        type="button"
+        class="store-category"
+        data-category="farmacia"
+      >
+        Farmácia
+      </button>
 
-          <span
-            class="shop-cart-count"
-            id="cartCount"
-          >
-            0
-          </span>
-        </span>
+      <button
+        type="button"
+        class="store-category"
+        data-category="mercearia"
+      >
+        Mini Mercado
+      </button>
 
-        <span class="shop-cart-label">
-          Carrinho
-        </span>
+      <button
+        type="button"
+        class="store-category"
+        data-category="casa"
+      >
+        Casa
+      </button>
 
-        <ion-icon
-          class="shop-cart-arrow"
-          name="arrow-forward-outline"
-        ></ion-icon>
-
+      <button
+        type="button"
+        class="store-category"
+        data-category="outros"
+      >
+        Outros
       </button>
 
     </div>
 
 
-    <!-- Featured Products -->
-    <div class="shop-featured-header">
+    <!-- =========================
+         RESULTS INFO
+         ========================= -->
+    <div class="store-results-header">
 
       <div>
-        <span class="shop-section-kicker">
-          SELEÇÃO STELVIX
+        <span id="stelvixResultsText">
+          Produtos disponíveis
         </span>
-
-        <h3>
-          Produtos em destaque
-        </h3>
       </div>
 
-      <button
-        type="button"
-        class="shop-view-all"
-        id="viewAllProducts"
-      >
-        Ver todos
-        <ion-icon name="arrow-forward-outline"></ion-icon>
-      </button>
+      <div>
+        <select
+          id="stelvixSortProducts"
+          class="store-sort"
+        >
+          <option value="featured">
+            Destaques
+          </option>
+
+          <option value="price-low">
+            Menor preço
+          </option>
+
+          <option value="price-high">
+            Maior preço
+          </option>
+
+          <option value="name">
+            Nome
+          </option>
+        </select>
+      </div>
 
     </div>
 
+
+    <!-- =========================
+         PRODUCT GRID
+         ========================= -->
     <div
-      class="shop-products-grid"
-      id="featuredProducts"
+      class="store-product-grid"
+      id="stelvixProductGrid"
     ></div>
 
 
-    <!-- All Products -->
+    <!-- =========================
+         EMPTY STATE
+         ========================= -->
     <div
-      class="shop-all-products"
-      id="allProductsSection"
-    >
-
-      <div class="shop-all-products-header">
-
-        <div>
-          <span class="shop-section-kicker">
-            CATÁLOGO
-          </span>
-
-          <h3>
-            Explore a nossa seleção
-          </h3>
-        </div>
-
-        <span
-          class="shop-results-count"
-          id="resultsCount"
-        >
-          0 produtos
-        </span>
-
-      </div>
-
-      <div
-        class="shop-products-grid"
-        id="productsGrid"
-      ></div>
-
-    </div>
-
-
-    <!-- Empty State -->
-    <div
-      class="shop-empty"
-      id="storeEmpty"
+      class="store-empty"
+      id="stelvixEmptyState"
       hidden
     >
 
-      <div class="shop-empty-icon">
-        <ion-icon name="search-outline"></ion-icon>
+      <div class="store-empty-icon">
+        ⌕
       </div>
 
       <h3>
-        Não encontramos esse produto.
+        Nenhum produto encontrado
       </h3>
 
       <p>
-        Tente pesquisar por outro nome ou escolha
+        Tente pesquisar por outro nome ou selecionar
         uma categoria diferente.
       </p>
 
       <button
         type="button"
-        id="resetStore"
-        class="shop-primary-button"
+        id="stelvixResetStore"
       >
         Ver todos os produtos
       </button>
@@ -345,12 +350,12 @@
 
 
 <!-- =========================================================
-     PRODUCT QUICK VIEW
-========================================================= -->
+     PRODUCT DETAIL MODAL
+     ========================================================= -->
 
 <div
   class="store-modal"
-  id="productModal"
+  id="stelvixProductModal"
   aria-hidden="true"
 >
 
@@ -359,119 +364,89 @@
     data-close-product
   ></div>
 
-  <div
-    class="product-modal-container"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="productModalTitle"
-  >
+  <div class="store-product-modal">
 
     <button
       type="button"
       class="store-modal-close"
-      id="closeProductModal"
-      aria-label="Fechar produto"
+      data-close-product
+      aria-label="Fechar"
     >
-      <ion-icon name="close-outline"></ion-icon>
+      ×
     </button>
 
-    <div class="product-modal-image">
+    <div class="store-product-detail">
 
-      <img
-        id="productModalImage"
-        src=""
-        alt=""
-      >
+      <div class="store-product-detail-image">
 
-      <span
-        class="product-modal-badge"
-        id="productModalBadge"
-      ></span>
-
-    </div>
-
-    <div class="product-modal-info">
-
-      <span
-        class="product-modal-category"
-        id="productModalCategory"
-      ></span>
-
-      <h2 id="productModalTitle"></h2>
-
-      <div class="product-modal-price-row">
-
-        <strong id="productModalPrice"></strong>
-
-        <del id="productModalOldPrice"></del>
-
-      </div>
-
-      <p
-        class="product-modal-description"
-        id="productModalDescription"
-      ></p>
-
-      <div
-        class="product-stock"
-        id="productModalStock"
-      ></div>
-
-      <div class="product-modal-actions">
-
-        <div class="quantity-control">
-
-          <button
-            type="button"
-            id="decreaseQuantity"
-            aria-label="Diminuir quantidade"
-          >
-            −
-          </button>
-
-          <span id="productQuantity">
-            1
-          </span>
-
-          <button
-            type="button"
-            id="increaseQuantity"
-            aria-label="Aumentar quantidade"
-          >
-            +
-          </button>
-
-        </div>
-
-        <button
-          type="button"
-          class="product-add-button"
-          id="addToCartButton"
+        <img
+          id="stelvixDetailImage"
+          src=""
+          alt=""
         >
 
-          <ion-icon name="bag-add-outline"></ion-icon>
-
-          Adicionar ao carrinho
-
-        </button>
+        <span
+          id="stelvixDetailBadge"
+          class="store-product-badge"
+        ></span>
 
       </div>
 
-      <div class="product-trust">
+      <div class="store-product-detail-content">
 
-        <div>
-          <ion-icon name="shield-checkmark-outline"></ion-icon>
-          <span>Compra simples</span>
+        <span
+          id="stelvixDetailCategory"
+          class="store-product-category"
+        ></span>
+
+        <h2 id="stelvixDetailName"></h2>
+
+        <p
+          id="stelvixDetailDescription"
+          class="store-product-detail-description"
+        ></p>
+
+        <div class="store-product-detail-price">
+          <span id="stelvixDetailPrice"></span>
         </div>
 
-        <div>
-          <ion-icon name="car-outline"></ion-icon>
-          <span>Entrega STELVIX</span>
+        <div class="store-detail-stock">
+          <span class="store-stock-dot"></span>
+          Disponível para encomenda
         </div>
 
-        <div>
-          <ion-icon name="cash-outline"></ion-icon>
-          <span>Pagamento na entrega</span>
+        <div class="store-detail-actions">
+
+          <div class="store-quantity">
+
+            <button
+              type="button"
+              id="stelvixDetailMinus"
+            >
+              −
+            </button>
+
+            <span id="stelvixDetailQuantity">
+              1
+            </span>
+
+            <button
+              type="button"
+              id="stelvixDetailPlus"
+            >
+              +
+            </button>
+
+          </div>
+
+          <button
+            type="button"
+            class="store-primary-button"
+            id="stelvixAddDetailCart"
+          >
+            Adicionar ao carrinho
+          </button>
+
         </div>
 
       </div>
@@ -485,79 +460,70 @@
 
 <!-- =========================================================
      CART DRAWER
-========================================================= -->
+     ========================================================= -->
 
 <div
-  class="cart-drawer"
-  id="cartDrawer"
+  class="store-cart-layer"
+  id="stelvixCartLayer"
   aria-hidden="true"
 >
 
   <div
-    class="cart-overlay"
-    id="cartOverlay"
+    class="store-cart-overlay"
+    id="stelvixCartOverlay"
   ></div>
 
-  <aside
-    class="cart-panel"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="cartTitle"
-  >
+  <aside class="store-cart-drawer">
 
-    <div class="cart-header">
+    <div class="store-cart-header">
 
       <div>
-
-        <span class="cart-kicker">
+        <span class="store-eyebrow">
           STELVIX STORE
         </span>
 
-        <h2 id="cartTitle">
+        <h3>
           O seu carrinho
-        </h2>
-
+        </h3>
       </div>
 
       <button
         type="button"
-        class="cart-close"
-        id="closeCart"
-        aria-label="Fechar carrinho"
+        class="store-cart-close"
+        id="stelvixCloseCart"
       >
-        <ion-icon name="close-outline"></ion-icon>
+        ×
       </button>
 
     </div>
 
 
     <div
-      class="cart-items"
-      id="cartItems"
+      class="store-cart-items"
+      id="stelvixCartItems"
     ></div>
 
 
     <div
-      class="cart-empty"
-      id="cartEmpty"
+      class="store-cart-empty"
+      id="stelvixCartEmpty"
     >
 
-      <div class="cart-empty-icon">
-        <ion-icon name="bag-outline"></ion-icon>
+      <div>
+        🛒
       </div>
 
-      <h3>
+      <h4>
         O seu carrinho está vazio
-      </h3>
+      </h4>
 
       <p>
-        Adicione produtos para começar a sua compra.
+        Adicione produtos para começar a sua encomenda.
       </p>
 
       <button
         type="button"
-        class="shop-primary-button"
-        id="continueShopping"
+        id="stelvixContinueShopping"
       >
         Continuar a comprar
       </button>
@@ -566,48 +532,852 @@
 
 
     <div
-      class="cart-footer"
-      id="cartFooter"
+      class="store-cart-footer"
+      id="stelvixCartFooter"
     >
 
-      <div class="cart-summary">
+      <div class="store-cart-subtotal">
 
         <span>
           Subtotal
         </span>
 
-        <strong id="cartSubtotal">
+        <strong id="stelvixCartSubtotal">
           0 Kz
         </strong>
 
       </div>
 
-      <p class="cart-note">
-        O valor da entrega será confirmado no checkout.
+      <p class="store-cart-delivery-note">
+        O valor da entrega será confirmado de acordo
+        com a zona de entrega.
       </p>
 
       <button
         type="button"
-        class="cart-checkout-button"
-        id="checkoutButton"
+        class="store-primary-button store-checkout-button"
+        id="stelvixCheckoutButton"
       >
         Continuar para checkout
-
-        <ion-icon name="arrow-forward-outline"></ion-icon>
-
-      </button>
-
-      <button
-        type="button"
-        class="cart-continue-button"
-        id="continueShoppingBottom"
-      >
-        Continuar a comprar
       </button>
 
     </div>
 
   </aside>
+
+</div>
+
+
+<!-- =========================================================
+     PREMIUM CHECKOUT
+     ========================================================= -->
+
+<div
+  class="checkout-modal"
+  id="stelvixCheckoutModal"
+  aria-hidden="true"
+>
+
+  <div
+    class="checkout-overlay"
+    data-close-checkout
+  ></div>
+
+  <div class="checkout-container">
+
+    <!-- HEADER -->
+
+    <header class="checkout-header">
+
+      <div class="checkout-brand">
+
+        <div class="checkout-brand-mark">
+          S
+        </div>
+
+        <div>
+          <strong>
+            STELVIX STORE
+          </strong>
+
+          <span>
+            Checkout seguro
+          </span>
+        </div>
+
+      </div>
+
+      <div class="checkout-secure">
+        🔒 Compra segura
+      </div>
+
+      <button
+        type="button"
+        class="checkout-close"
+        data-close-checkout
+      >
+        ×
+      </button>
+
+    </header>
+
+
+    <!-- PROGRESS -->
+
+    <div class="checkout-progress">
+
+      <div
+        class="checkout-progress-item active"
+        data-progress="1"
+      >
+        <span>1</span>
+        <small>Dados</small>
+      </div>
+
+      <div class="checkout-progress-line"></div>
+
+      <div
+        class="checkout-progress-item"
+        data-progress="2"
+      >
+        <span>2</span>
+        <small>Entrega</small>
+      </div>
+
+      <div class="checkout-progress-line"></div>
+
+      <div
+        class="checkout-progress-item"
+        data-progress="3"
+      >
+        <span>3</span>
+        <small>Pagamento</small>
+      </div>
+
+      <div class="checkout-progress-line"></div>
+
+      <div
+        class="checkout-progress-item"
+        data-progress="4"
+      >
+        <span>4</span>
+        <small>Revisão</small>
+      </div>
+
+    </div>
+
+
+    <!-- CHECKOUT BODY -->
+
+    <div class="checkout-body">
+
+      <main class="checkout-main">
+
+
+        <!-- STEP 1 -->
+
+        <section
+          class="checkout-step active"
+          data-step="1"
+        >
+
+          <div class="checkout-step-heading">
+
+            <span>
+              PASSO 01
+            </span>
+
+            <h2>
+              Como podemos contactar consigo?
+            </h2>
+
+            <p>
+              Não precisa de criar uma conta para fazer
+              uma encomenda.
+            </p>
+
+          </div>
+
+
+          <div class="checkout-form-grid">
+
+            <div class="checkout-field checkout-full">
+
+              <label for="checkoutName">
+                Nome completo
+              </label>
+
+              <input
+                type="text"
+                id="checkoutName"
+                placeholder="Ex.: João Manuel"
+                autocomplete="name"
+              >
+
+              <small class="checkout-error"></small>
+
+            </div>
+
+
+            <div class="checkout-field">
+
+              <label for="checkoutPhone">
+                WhatsApp / Telefone
+              </label>
+
+              <input
+                type="tel"
+                id="checkoutPhone"
+                placeholder="Ex.: 935 262 323"
+                autocomplete="tel"
+              >
+
+              <small class="checkout-error"></small>
+
+            </div>
+
+
+            <div class="checkout-field">
+
+              <label for="checkoutEmail">
+                E-mail
+                <em>Opcional</em>
+              </label>
+
+              <input
+                type="email"
+                id="checkoutEmail"
+                placeholder="seuemail@email.com"
+                autocomplete="email"
+              >
+
+              <small class="checkout-error"></small>
+
+            </div>
+
+          </div>
+
+
+          <div class="checkout-information">
+
+            <span>✓</span>
+
+            <div>
+              <strong>
+                Sem criação de conta
+              </strong>
+
+              <p>
+                A sua encomenda pode ser feita de forma
+                simples, sem necessidade de registo.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="checkout-actions">
+
+            <button
+              type="button"
+              class="store-primary-button"
+              data-next-step="2"
+            >
+              Continuar
+              <span>→</span>
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- STEP 2 -->
+
+        <section
+          class="checkout-step"
+          data-step="2"
+        >
+
+          <div class="checkout-step-heading">
+
+            <span>
+              PASSO 02
+            </span>
+
+            <h2>
+              Onde devemos entregar?
+            </h2>
+
+            <p>
+              Informe os dados necessários para
+              encontrarmos o local de entrega.
+            </p>
+
+          </div>
+
+
+          <div class="checkout-form-grid">
+
+            <div class="checkout-field checkout-full">
+
+              <label for="checkoutAddress">
+                Endereço
+              </label>
+
+              <input
+                type="text"
+                id="checkoutAddress"
+                placeholder="Rua, bairro, número da casa..."
+              >
+
+              <small class="checkout-error"></small>
+
+            </div>
+
+
+            <div class="checkout-field">
+
+              <label for="checkoutZone">
+                Zona / Município
+              </label>
+
+              <select id="checkoutZone">
+
+                <option value="">
+                  Selecionar zona
+                </option>
+
+                <option value="Luanda">
+                  Luanda
+                </option>
+
+                <option value="Viana">
+                  Viana
+                </option>
+
+                <option value="Zango">
+                  Zango
+                </option>
+
+                <option value="Talatona">
+                  Talatona
+                </option>
+
+                <option value="Kilamba">
+                  Kilamba
+                </option>
+
+                <option value="Outra zona">
+                  Outra zona
+                </option>
+
+              </select>
+
+              <small class="checkout-error"></small>
+
+            </div>
+
+
+            <div class="checkout-field">
+
+              <label for="checkoutReference">
+                Ponto de referência
+                <em>Opcional</em>
+              </label>
+
+              <input
+                type="text"
+                id="checkoutReference"
+                placeholder="Ex.: próximo de..."
+              >
+
+            </div>
+
+
+            <div class="checkout-field checkout-full">
+
+              <label for="checkoutNotes">
+                Observações da entrega
+                <em>Opcional</em>
+              </label>
+
+              <textarea
+                id="checkoutNotes"
+                rows="4"
+                placeholder="Alguma informação que possa facilitar a entrega?"
+              ></textarea>
+
+            </div>
+
+          </div>
+
+
+          <div class="checkout-information">
+
+            <span>i</span>
+
+            <div>
+
+              <strong>
+                Entrega
+              </strong>
+
+              <p>
+                O custo da entrega será confirmado de acordo
+                com a zona indicada antes da finalização.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="checkout-actions checkout-actions-between">
+
+            <button
+              type="button"
+              class="checkout-back-button"
+              data-prev-step="1"
+            >
+              ← Voltar
+            </button>
+
+            <button
+              type="button"
+              class="store-primary-button"
+              data-next-step="3"
+            >
+              Continuar
+              <span>→</span>
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- STEP 3 -->
+
+        <section
+          class="checkout-step"
+          data-step="3"
+        >
+
+          <div class="checkout-step-heading">
+
+            <span>
+              PASSO 03
+            </span>
+
+            <h2>
+              Como pretende pagar?
+            </h2>
+
+            <p>
+              Escolha a forma de pagamento disponível
+              para a sua encomenda.
+            </p>
+
+          </div>
+
+
+          <div class="payment-options">
+
+            <label class="payment-option selected">
+
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="Pagamento na entrega"
+                checked
+              >
+
+              <span class="payment-radio"></span>
+
+              <div>
+
+                <strong>
+                  Pagamento na entrega
+                </strong>
+
+                <p>
+                  Pague quando receber a sua encomenda.
+                </p>
+
+              </div>
+
+              <span class="payment-icon">
+                💵
+              </span>
+
+            </label>
+
+
+            <label class="payment-option">
+
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="TPA"
+              >
+
+              <span class="payment-radio"></span>
+
+              <div>
+
+                <strong>
+                  TPA
+                </strong>
+
+                <p>
+                  Pagamento através de terminal TPA,
+                  quando disponível na entrega.
+                </p>
+
+              </div>
+
+              <span class="payment-icon">
+                💳
+              </span>
+
+            </label>
+
+          </div>
+
+
+          <div class="checkout-payment-notice">
+
+            <span>
+              🔒
+            </span>
+
+            <div>
+
+              <strong>
+                Sem pagamento online nesta fase
+              </strong>
+
+              <p>
+                A STELVIX prioriza uma experiência de compra
+                simples e segura para o cliente.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="checkout-actions checkout-actions-between">
+
+            <button
+              type="button"
+              class="checkout-back-button"
+              data-prev-step="2"
+            >
+              ← Voltar
+            </button>
+
+            <button
+              type="button"
+              class="store-primary-button"
+              data-next-step="4"
+            >
+              Rever encomenda
+              <span>→</span>
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- STEP 4 -->
+
+        <section
+          class="checkout-step"
+          data-step="4"
+        >
+
+          <div class="checkout-step-heading">
+
+            <span>
+              PASSO 04
+            </span>
+
+            <h2>
+              Está tudo certo?
+            </h2>
+
+            <p>
+              Reveja os dados antes de confirmar a sua
+              encomenda.
+            </p>
+
+          </div>
+
+
+          <div class="checkout-review">
+
+            <div class="review-block">
+
+              <div class="review-block-heading">
+
+                <h3>
+                  Contacto
+                </h3>
+
+                <button
+                  type="button"
+                  data-review-edit="1"
+                >
+                  Editar
+                </button>
+
+              </div>
+
+              <p id="reviewContact"></p>
+
+            </div>
+
+
+            <div class="review-block">
+
+              <div class="review-block-heading">
+
+                <h3>
+                  Entrega
+                </h3>
+
+                <button
+                  type="button"
+                  data-review-edit="2"
+                >
+                  Editar
+                </button>
+
+              </div>
+
+              <p id="reviewDelivery"></p>
+
+            </div>
+
+
+            <div class="review-block">
+
+              <div class="review-block-heading">
+
+                <h3>
+                  Pagamento
+                </h3>
+
+                <button
+                  type="button"
+                  data-review-edit="3"
+                >
+                  Editar
+                </button>
+
+              </div>
+
+              <p id="reviewPayment"></p>
+
+            </div>
+
+          </div>
+
+
+          <label class="checkout-consent">
+
+            <input
+              type="checkbox"
+              id="checkoutConsent"
+            >
+
+            <span></span>
+
+            <p>
+              Confirmo que os dados fornecidos estão corretos
+              e quero finalizar esta encomenda.
+            </p>
+
+          </label>
+
+          <small
+            class="checkout-consent-error"
+            id="checkoutConsentError"
+          ></small>
+
+
+          <div class="checkout-actions checkout-actions-between">
+
+            <button
+              type="button"
+              class="checkout-back-button"
+              data-prev-step="3"
+            >
+              ← Voltar
+            </button>
+
+            <button
+              type="button"
+              class="store-primary-button"
+              id="stelvixConfirmOrder"
+            >
+              Confirmar encomenda
+              <span>✓</span>
+            </button>
+
+          </div>
+
+        </section>
+
+      </main>
+
+
+      <!-- =========================
+           ORDER SUMMARY
+           ========================= -->
+
+      <aside class="checkout-summary">
+
+        <div class="checkout-summary-heading">
+
+          <span>
+            SUA ENCOMENDA
+          </span>
+
+          <h3>
+            Resumo
+          </h3>
+
+        </div>
+
+
+        <div
+          class="checkout-summary-items"
+          id="stelvixCheckoutItems"
+        ></div>
+
+
+        <div class="checkout-summary-divider"></div>
+
+
+        <div class="checkout-summary-row">
+
+          <span>
+            Subtotal
+          </span>
+
+          <strong id="stelvixCheckoutSubtotal">
+            0 Kz
+          </strong>
+
+        </div>
+
+
+        <div class="checkout-summary-row">
+
+          <span>
+            Entrega
+          </span>
+
+          <strong>
+            A confirmar
+          </strong>
+
+        </div>
+
+
+        <div class="checkout-summary-total">
+
+          <span>
+            Total estimado
+          </span>
+
+          <strong id="stelvixCheckoutTotal">
+            0 Kz
+          </strong>
+
+        </div>
+
+
+        <div class="checkout-trust">
+
+          <div>
+            ✓ Compra simples
+          </div>
+
+          <div>
+            ✓ Sem criação de conta
+          </div>
+
+          <div>
+            ✓ Atendimento STELVIX
+          </div>
+
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     ORDER SUCCESS
+     ========================================================= -->
+
+<div
+  class="order-success-modal"
+  id="stelvixOrderSuccess"
+  aria-hidden="true"
+>
+
+  <div class="order-success-card">
+
+    <div class="order-success-icon">
+      ✓
+    </div>
+
+    <span class="store-eyebrow">
+      STELVIX STORE
+    </span>
+
+    <h2>
+      Encomenda recebida.
+    </h2>
+
+    <p>
+      A sua encomenda foi preparada com sucesso.
+      Em breve entraremos em contacto para confirmar
+      os detalhes da entrega.
+    </p>
+
+    <div class="order-number-box">
+
+      <span>
+        Nº DA ENCOMENDA
+      </span>
+
+      <strong id="stelvixOrderNumber">
+        STX-000000
+      </strong>
+
+    </div>
+
+    <button
+      type="button"
+      class="store-primary-button"
+      id="stelvixCloseSuccess"
+    >
+      Concluir
+    </button>
+
+  </div>
 
 </div>
 
