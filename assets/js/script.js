@@ -633,6 +633,175 @@ document.addEventListener("DOMContentLoaded", function () {
     },
 
     {
+      id: "beb-004",
+      name: "Champanhe J.C. Le Roux - O Brilho das Festas",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 6500,
+      badge: "Popular",
+      description:
+        "O champanhe mais amado para celebrar!",
+      image:
+        "assets/images/item-8.jpg"
+    },
+    {
+      id: "beb-005",
+      name: "Champanhe Moscato Rosé - Doce e Refrescante",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 11500,
+      badge: "",
+      description:
+        "O queridinho das mulheres!",
+      image:
+        "assets/images/item-9.jpg"
+    },
+    {
+      id: "beb-006",
+      name: "Champanhe Don Luciano Moscato - O Branco Doce e Elegante",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 6999,
+      badge: "Popular",
+      description:
+        "Leve, doce e sofisticado!",
+      image:
+        "assets/images/item-10.jpg"
+    },
+    {
+      id: "beb-007",
+      name: "Mabanga - Bebida Tradicional 750ml",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 6600,
+      badge: "",
+      description:
+        "O sabor da nossa terra!",
+      image:
+        "assets/images/item-11.jpg"
+    },
+    {
+      id: "beb-008",
+      name: "Gin Gordon's London Dry Gin - Original 1L",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 8999,
+      badge: "Popular",
+      description:
+        "O Gin mais famoso do mundo!",
+      image:
+        "assets/images/item-12.jpg"
+    },
+    {
+      id: "beb-009",
+      name: "Whiskey Jameson Irish Whiskey 750ml - Tripla Destilação",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 16700,
+      badge: "",
+      description:
+        "O Whiskey suave nº1 do mundo!",
+      image:
+        "assets/images/item-13.jpg"
+    },
+    {
+      id: "beb-010",
+      name: "Vodka Escape Original 750ml - Suave e Premium",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 6999,
+      badge: "Popular",
+      description:
+        "A Vodka que todo mundo quer provar!",
+      image:
+        "assets/images/item-14.jpg"
+    },
+    {
+      id: "beb-011",
+      name: "Martini Rosso Vermouth Original 1L - O Clássico Italiano",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 19999,
+      badge: "Sofisticado",
+      description:
+        "O toque italiano que não pode faltar!",
+      image:
+        "assets/images/item-15.jpg"
+    },
+    {
+      id: "beb-012",
+      name: "Cinzano Rosso Vermouth Italiano 1L - Intenso e Aromático",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 14300,
+      badge: "",
+      description:
+        "O Vermouth dos apreciadores!",
+      image:
+        "assets/images/item-16.jpg"
+    },
+    {
+      id: "beb-013",
+      name: "Whiskey VAT 69 Scotch Blended 750ml - O Clássico Escocês",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 7500,
+      badge: "Popular",
+      description:
+        "O Whiskey do povo!",
+      image:
+        "assets/images/item-17.jpg"
+    },
+    {
+      id: "beb-014",
+      name: "Whisky Chivas Regal 12 Anos 750ml - O Premium Escocês",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 19500,
+      badge: "",
+      description:
+        "O Whiskey dos patrões!",
+      image:
+        "assets/images/item-18.jpg"
+    },
+    {
+      id: "beb-015",
+      name: "Whiskey Ballantine's Finest 750ml - O Original Escocês",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 22999,
+      badge: "Sofisticado",
+      description:
+        "O Whiskey que nunca falha!",
+      image:
+        "assets/images/item-19.jpg"
+    },
+    {
+      id: "beb-016",
+      name: "Licor Best Marula Fruit Cream 750ml - Cremoso e Doce",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 7500,
+      badge: "",
+      description:
+        "O creme que as damas amam!",
+      image:
+        "assets/images/item-20.jpg"
+    },
+    {
+      id: "beb-017",
+      name: "Licor Amarula Cream Original 750ml - A Original de África",
+      category: "bebida",
+      categoryLabel: "Bebida",
+      price: 13999,
+      badge: "Popular",
+      description:
+        "A Rainha dos Licores!",
+      image:
+        "assets/images/item-21.jpg"
+    },
+
+    {
       id: "tec-001",
       name: "Airpods Oraimo - Som Potente e Bateria de Longa Duração",
       category: "tecnologia",
@@ -679,7 +848,7 @@ document.addEventListener("DOMContentLoaded", function () {
       price: 19999,
       badge: "",
       description:
-        "Nuna mais fique sem bateria!",
+        "Nunca mais fique sem bateria!",
       image:
         "assets/images/item-7.jpg"
     }
