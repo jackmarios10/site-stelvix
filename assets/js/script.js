@@ -3098,3 +3098,47 @@ document.addEventListener("DOMContentLoaded", function () {
   updateCartCount();
 
 });
+
+
+
+
+/* ============================================
+   STELVIX STORE — OTIMIZAÇÃO DE IMAGENS
+   ============================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const optimizeStoreImages = () => {
+
+        document.querySelectorAll("img").forEach((img) => {
+
+            // Imagens fora da área visível carregam apenas quando necessário
+            if (!img.closest(".store-product-detail, .store-modal")) {
+                img.loading = "lazy";
+            }
+
+            // Permite ao navegador tratar a decodificação da imagem
+            // sem bloquear desnecessariamente a interface
+            img.decoding = "async";
+
+            // Evita que o navegador tente arrastar a imagem
+            img.draggable = false;
+        });
+
+    };
+
+    // Executa depois de a Store carregar
+    optimizeStoreImages();
+
+    // Como os produtos são criados dinamicamente pelo JavaScript,
+    // observa novas imagens adicionadas posteriormente.
+    const observer = new MutationObserver(() => {
+        optimizeStoreImages();
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+});
