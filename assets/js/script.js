@@ -590,7 +590,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description:
         "Transforme sua cozinha com a Pia que faz tudo!",
       image:
-        "assets/images/item-1.webp"
+        "assets/images/item-1.jpg"
     },
 
     {
